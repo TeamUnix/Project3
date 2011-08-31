@@ -13,6 +13,7 @@
 *.dvi
 *.log
 *.synctex-gz
+*.synctex.gz
 *.pdf
 #
 
