@@ -15,6 +15,7 @@
 *.synctex-gz
 *.synctex.gz
 *.pdf
+*.project
 #
 
 #	VHDL
