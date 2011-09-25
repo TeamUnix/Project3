@@ -5,55 +5,43 @@
  \begin{centering}
   \includegraphics[width=1\textwidth]{images/rich_picture1.png}
    \caption{The surrounding environment is shown in the rich picture. The
- 			 elements are: solar-panels, hydrogen storrage, battery-charger, windturbine
- 			 converter, userinterface, the electric grid and different loads such as a
- 			 hyrogen engine, vacumcleaner etc. }
+ 			 elements are: photovoltaic cells, hydrogen storage, battery-charger, wind-turbine
+ 			 converter, user-interface, the electric grid and different loads such as a
+ 			 hydrogen engine, vacuum-cleaner etc. }
  \end{centering}
 \end{figure}
 
-
-\subsection{Storry Telling}
-Aarhus University, a place full of innovation and great ideas. Jan Nielsen
-welcomes a class of high-school students to the green system simulator. Here it
+\subsection{Story Telling}
+The main user of the system, Jan Nielsen just got a new energy module to connect to his system. Luckily there is plenty of space
+for new modules in the systems energy hub. He connects the device to the hub where after he from the user interface easily can fire up the module.
+The connection of new modules is straight forward as all the module connectors are similar and the system energy hub finds out by itself
+if it is an input, output or both way device.
+\newline
+Aarhus University, a place full of innovation and great ideas. Jan welcomes a class of high-school students to the green system simulator. Here it
 is possible to see how much energy you can get out of green energy harvesting
 such as wind and solar energy. When the system produces to much energy, the 
-energy is stored in form of Hydrogen. The Hydrogen is to be used for a Hydrogen
-driven engine which is placed nearby the green system simulator. Here people can
-really come an get an idea about how much they can help the environment, but
-also their own wallet, if they invest in some green energy for their own house.
+energy is stored in form of Hydrogen. Here people can really come an get an idea about 
+how much they can help the environment, but also their own wallet, if they invest in some green energy for their own house.
 The guests can navigate around on a screen to see how much energy each device 
 creates or consumes, this is shown in a down to earth way, where everybody can follow, 
 even persons without no special education or courses in the energy field.
-\subsection{Storycards}
-\textbf{Story Card 1:} I want to be able see how much energy is being harvest by
-the wind turbines and solar panels and how much energy is being consumed, this should be
-a user friandly graphycal interface.\\
-\newline
-\textbf{Story Card 2:} When the energy production is higher (batteries full
-charged, and no loads connected), the energy should be stored as hydrogen in a safe way so
-later it can be converted again to energy by a fuel cell, used as gas for a
-hydrogen car or generator.\\
-\newline
-\textbf{Story Card 3:} In order to show of, the interface has too be userfriedly
-and easy too use, so students coming over to AU - Herning without any energy
-knowledge should be able to easly navigate the system.\\
-\newline
-\textbf{Story Card 4:} The system will be in a outside enviroment, so it as to
-be robust against weather conditions and people temper.\\
-\newline
-\textbf{Story Card 5:} When batteries and hydrogen tanks are fully charged, the
-energy should be provided into the national power grid or/and university electrical
-system.\\
-\newline
-\textbf{Story Card 6:} For further improvements and development the system have
-to be fully documented, scalable and modular hardware construction.\\
+\subsection{Story cards}
+\textbf{Story Card 1:} Jan is looking at the webpage for the energy hub. From here he can see the status for each modules 
+in a graphically way.\\
+\textbf{Story Card 2:} A new energy module is connected to the hub. Jan opens up the webpage for the energy hub. 
+To start, stop or see a more detailed overview of each module, he have to log into the administrator section of the system.
+Jan really likes the graphically way that is also kept in the administrator section, this makes it possible for other
+non-technically persons to operate the system if Jan is not there one day that the system needs to be operated.\\
+\textbf{Story Card 3:} It is one of many regularly autumn days in Denmark, rainy and windy. The system is placed outside
+but still it operates perfectly under these weather conditions. To operate the system or see the status for one of the modules,
+it is not necessary for anyone to go outside to the module, they can simply log onto the system from their workstation pc or laptop.
 \newpage
 \subsection{Preliminary Use Cases}
 
 \begin{figure}[!h]
 	\begin{centering}
 		\includegraphics[width=0.7\textwidth]{images/usecases1.jpg}
-		\caption{System initialisation. }
+		\caption{System initialization. }
 	\end{centering}
 \end{figure}
 
@@ -66,13 +54,13 @@ to be fully documented, scalable and modular hardware construction.\\
 \newpage
 
 \subsection{Stakeholder Analysis}
-This section descripes how much influence the different persons
+This section describes how much influence the different persons
 involved in the project have.\\[0.2cm]
 \textbf{Project coordinators:}\\ Morten Opprud\\ Klaus Kolle\\
 \\
 \textbf{Customers/Users:}\\
 Jan Nielsen - Customer ( Primary User )\\
-High school students ( Secundary Users )\\
+High school students ( Secondary Users )\\
 Rene A. S. Josefsen ( Web interface customer )\\
 \\
 \textbf{Developers:}\\
@@ -80,11 +68,11 @@ Dennis Madsen\\
 Theis Christensen\\
 Pualo M. Fontes\\
 \\
-\textbf{Supliers:}\\
+\textbf{Suppliers:}\\
 Jens Mortensen\\
 Per Lysgaard\\
 \\
-\textbf{Theory Advicers:}\\
+\textbf{Theory Advisors:}\\
 Henning Slavensky\\
 Ulrich Bjerre\\
 Kristian Lomholdt\\
@@ -95,19 +83,19 @@ Kristian Lomholdt\\
    \hline
     & \textbf{Has decision power} & \textbf{Has no decision power} \\ \hline
     \multirow{3}{*}{\textbf{Directly involved stakeholder}} 
-    	& Klaus Kolle & Jan Nielsen \\ 
-    	& Morten Opprud & Rene A. S. Josefsen  \\ 
-    	& Developers &  \\ \hline
-    \multirow{2}{*}{\textbf{Not directly involvedstakeholder}} 
-    	& High School Students & Jens Mortensen\\ 
-    	& & Per Lysgaard\\ \hline
+    	& Klaus Kolle & Rene A. S. Josefsen\\ 
+    	& Morten Opprud &  \\ 
+    	& Jan Nielsen &  \\ \hline
+    \multirow{2}{*}{\textbf{Not directly involved stakeholders}} 
+    	& High School Students & Jens Mortensen\\
+    	& Per Lysgaard & \\ \hline
    \end{tabular}
   \end{center}
  \caption{Stakeholder table}
 \end{figure}
 
-Klaus Kolle and Morten Opprud, are the project coordenators/managers, they
-have decision power over the final product and are directly envolved on the
+Klaus Kolle and Morten Opprud, are the project coordinators/managers, they
+have decision power over the final product and are directly involved on the
 development.\\
 \newline
 Jan Nielsen is the customer, the primary user of the system so he has the
@@ -117,8 +105,8 @@ process.\\
 High School Students have decision power over the final interface since they
 are the secondary users of the system. They will be our testers.\\
 \newline
-Rene A. S. Josefsen is our webinterface customer, has no decision power in the
-overall system, but is direct envolve in the development of the system.\\
+Rene A. S. Josefsen is our web-interface customer, has no decision power in the
+overall system, but is direct involve in the development of the system.\\
 \newline
 Jens Mortensen is the component supplier, is not directly involved in the
 project and has no decision power over the final product.\\
@@ -142,11 +130,11 @@ The fast charging profile on the other hand charges the hydrogen tank and the
 battery on the fastest possible way. In other words, if there is not enough
 green energy, energy will be taken from the grid.
 \\If we are in a condition where the hydrogen and battery storages are full,
-then energy produced becide this will be sent to the grid or go to the schools
+then energy produced beside this will be sent to the grid or go to the schools
 electrical system.\\\\
 \textbf{Proposal 2:}\\
 To switch between the green mode to fast charging a button can be putted
-physicaly in the hardware box.\\\\
+physically in the hardware box.\\\\
 \textbf{Proposal 3 (Optimizing):}\\
 Extra output extension model, so the user can connect devices, and switch
 each output on and off. This module will be used to present to high school
