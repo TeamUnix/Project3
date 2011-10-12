@@ -12,30 +12,37 @@
 		\end{figure}
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
-				\begin{itemize}
-					\item
-				\end{itemize}
 			\item Non-functional Requirements ("system shall be 'requirement' ")
-				\begin{itemize}
-					\item something					
-				\end{itemize}
 			\item Behavioural Requirements ("how the system shall react")
-				\begin{itemize}
-					\item something
-				\end{itemize}
 			\item Performance Requirements ("how well does it have to be done")
-				\begin{itemize}
-					\item Easy to use and fast to learn web-user interface. Should be able to be used by non-technical persons.
-				\end{itemize}
 		\end{itemize}
 		Put in diagrams of requirement capture (looks like class diagrams with inherited classes).\\
 		Alternatively put in the requirements as in the picture we made on the blackboard.
 	\subsubsection{Problem Domain Analysis}
-			Make diagrams describing the parts that the hub should control, this is done by some kind of classes.
-		\begin{itemize}
-			\item Block Diagram\\
-			\item State Machine Diagrams
-		\end{itemize}
+			\paragraph{Block Diagram:}
+				\textbf{Candidates in the system}
+				\\\textbf{Consumers:} Units that consumes power (e.g. light, washingmachine, electric car)
+				\\\textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
+				\\\textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed. 
+				\\\textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
+				\\\textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high.
+				\newline
+			\paragraph{Block Diagram:}
+				\textbf{Event in the system}
+				\\\textbf{TemperatureBelowLimit}
+				\\\textbf{TemperatureAboveLimit}
+				\\\textbf{HumidityAboveLimit}
+				\\\textbf{EnergyAboveLimit}
+				\\\textbf{EnergyBelowLimit}
+				\\\textbf{InitModule}
+				\\\textbf{StartModule}
+				\\\textbf{StopModule}
+				\\\textbf{StandbyModule}
+				\\\\\textbf{Table with all the above candidates and event combined:}
+				\newline
+			\paragraph{State Machine Diagrams}
+			
+			
 	\subsubsection{Usage Domain Analysis}
 		\begin{itemize}
 			\item Use Cases
