@@ -18,7 +18,7 @@
 	\subsubsection{Problem Domain Analysis}
 			\paragraph{Block Diagram:}
 				\textbf{Candidates in the system}
-				\\\textbf{Consumers:} Units that consumes power (e.g. light, washingmachine, electric car)
+				\\\textbf{Consumers:} Units that consumes power (e.g. light, washing machine, electric car)
 				\\\textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
 				\\\textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed. 
 				\\\textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
@@ -35,6 +35,23 @@
 				\\\textbf{StartModule}
 				\\\textbf{StopModule}
 				\\\textbf{StandbyModule}
+				\\
+				\begin{table}[h!]
+					\begin{tabular}{| r | c | c | c | c | c |}
+					\hline
+					~ & Consumers & Producers & Storage & Temp & Humidity \\ \hline
+					TempBellowLimit & ~ & ~ & ~ & X & ~ \\ \hline
+					TempAboveLimit & ~ & ~ & ~ & X & ~ \\ \hline
+					HumidityAboveLimit & ~ & ~ & ~ & ~ & X \\ \hline
+					InitModule & X & X & X & ~ & ~ \\ \hline
+					StartModule & X & X & X & ~ & ~ \\ \hline
+					StopModule & X & X & X & ~ & ~ \\ \hline
+					StandbyModule & ~ & X & X & ~ & ~ \\ \hline
+					EnergyAboveLimit & ~ & X & ~ & ~ & ~ \\ \hline
+					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\
+					\hline
+					\end{tabular}
+				\end{table}
 				\\ Text about all different states in the system.  \textbf{DENNES}
 				\\\textbf{Table with all the above candidates and event combined:}
 				\newline
