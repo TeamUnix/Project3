@@ -2,19 +2,106 @@
 \section{Launch Phase}
 \subsection{General Analysis}
 	\subsubsection{Requirements	 Analysis}
-		Put in description of the requirements... \textbf{JESUS}
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
 			\item Non-functional Requirements ("system shall be 'requirement' ")
 			\item Behavioural Requirements ("how the system shall react")
 			\item Performance Requirements ("how well does it have to be done")
 		\end{itemize}
-		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
-			\begin{centering}
-				 \includegraphics[width=1.0\textwidth]{images/requirement_capture.JPG}
-		 		\caption{Design}
-			 \end{centering}
-		\end{figure}
+		% Functional Table
+		\begin{table}[h!]
+		\begin{tabular} [b] {| c |  p{3cm} | c | p{10cm} |}
+			\hline
+			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\\hline
+			F-1 & Communication &  &  \\ \hline
+			F-1.1 & Web Server &  & HTTP communication between the hub and the web server; Web-services are going to be use. \\ \hline
+			F-1.2 & System &  & System uses Power Line Communication to send and receive data between the modules and the hub. \\ \hline
+			F-1.2.1 & Protocol &  & Not Defined yet... \\ \hline
+			F-2 & Routing &  &  \\ \hline
+			F-2.1 & Storage &  & Energy stored is routed to the consumers. \\ \hline
+			F-2.2 & Producers &  & Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
+			% &~  &~  &~  \\ \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+		\end{tabular}
+		\caption{Functional: System shall do...}
+		\end{table}
+		
+		% Non-Function Table
+		\begin{table}[h!]
+			\begin{tabular} [b] {| c |  p{3cm} | c | p{10cm} |}
+			\hline
+			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\\hline
+			NF-1 & User Interface &  &  \\ \hline
+			NF-1.1 & Web Interface &  & User Friendly; Easy to understand so everyone without energy knowledge could use the system. \\ \hline
+			NF-1.2 & HW Interface &  & Simple; User Friendly; Only available for the user of the system. \\ \hline
+			NF-2 & Electrical &  &  \\ \hline
+			NF-2.1 & Voltage &  & The system work in a range 27.5V +-  10\%.\\ \hline
+			NF-2.2 & Current &  & Not defined yet... But very important \\ \hline
+			% &~  &~  &~  \\ \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+		\end{tabular}
+		\caption{Non-Function: System shall be...}
+		\end{table}
+		\newpage
+		% Behavioural Table
+		\begin{table}[h!]
+			\begin{tabular} [b] {| c |  p{3cm} | c | p{10cm} |}
+			\hline
+			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\\hline
+			B-1 & Status &  &  \\\hline
+			B-1.1 & Webpage &  & Warning will be posted in the webpage interface. \\\hline
+			B-1.2 & Physical &  & LEDs will show the current status of the connected device Running / Stand By / Warning. \\\hline
+			B-1.3 & Report &  & An email will be sent to the defined user when an error occurs. \\\hline
+			B-2 & Energy Control &  &  \\\hline
+			B-2.1 & Over-production &  & Change devices status to stand by. \\\hline
+			B-2.2 & Under-production &  & Use of the energy store in the input/output module and power grid if it have to be a fast charging. \\\hline
+			B-2.3 & Normal-production &  & The energy will be routed from the input devices to the output devices. \\\hline
+			B-3 & Disaster Avoid &  & Humidity and Temperature sensor will be placed inside the system housing. \\\hline
+			B-3.1 & Humidity &  & "When the humidity is high, stop system." \\\hline
+			B-3.2 & Temperature &  & "When temperature is high,  stop system." \\\hline
+			% &~  &~  &~  \\\hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+		\end{tabular}
+		\caption{Behavioural: How the system shall react...}
+		\end{table}
+		
+		% Perfomance Table
+		\begin{table}[h!]
+			\begin{tabular} [b] {| c | p{3cm} | c | p{10cm} |}
+			\hline
+			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\ \hline
+			P-1 & Hardware &  &  \\ \hline
+			P-1.1 & Housing &  & The housing have to be water-proof and with a good heat dissipation. \\ \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+			% &~  &~  &~  \\  \hline
+		\end{tabular}
+		\caption{Performance: How well does it have to be done...}
+		\end{table}
+		\newpage
 	\subsubsection{Problem Domain Analysis}
 			\paragraph{Block Diagram:}
 				\textbf{Candidates in the system}
@@ -48,8 +135,15 @@
 					StopModule & X & X & X & ~ & ~ \\ \hline
 					StandbyModule & ~ & X & X & ~ & ~ \\ \hline
 					EnergyAboveLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\
-					\hline
+					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\ \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
+					% &~  &~  &~  \\  \hline
 					\end{tabular}
 				\end{table}
 				\\ Text about all different states in the system.  \textbf{DENNES}
