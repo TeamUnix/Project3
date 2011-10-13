@@ -103,26 +103,27 @@
 		\end{table}
 		\newpage
 	\subsubsection{Problem Domain Analysis}
-			\paragraph{Block Diagram:}
-				\textbf{Candidates in the system}
-				\\\textbf{Consumers:} Units that consumes power (e.g. light, washing machine, electric car)
-				\\\textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
-				\\\textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed. 
-				\\\textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
-				\\\textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high.
-				\newline
-			\paragraph{Block Diagram:}
-				\textbf{Event in the system}
-				\\\textbf{TemperatureBelowLimit}
-				\\\textbf{TemperatureAboveLimit}
-				\\\textbf{HumidityAboveLimit}
-				\\\textbf{EnergyAboveLimit}
-				\\\textbf{EnergyBelowLimit}
-				\\\textbf{InitModule}
-				\\\textbf{StartModule}
-				\\\textbf{StopModule}
-				\\\textbf{StandbyModule}
-				\\
+			\paragraph{Block Diagram: Candidates in the system}
+			\begin{itemize}
+				\item \textbf{Consumers} Units that consumes power (e.g. light, washing machine, electric car)
+				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
+				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed. 
+				\item \textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
+				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high.
+			\end{itemize}
+			\paragraph{Block Diagram: Events in the system}
+				\begin{itemize}
+					\item TemperatureBelowLimit
+					\item TemperatureAboveLimit
+					\item HumidityAboveLimit
+					\item EnergyAboveLimit
+					\item EnergyBelowLimit
+					\item InitModule
+					\item StartModule
+					\item StopModule
+					\item StandbyModule
+				\end{itemize}
+				\textbf{Table with all the above candidates and event combined:}
 				\begin{table}[h!]
 					\begin{tabular}{| r | c | c | c | c | c |}
 					\hline
@@ -146,11 +147,30 @@
 					% &~  &~  &~  \\  \hline
 					\end{tabular}
 				\end{table}
-				\\ Text about all different states in the system.  \textbf{DENNES}
-				\\\textbf{Table with all the above candidates and event combined:}
-				\newline
+			\newpage
 			\paragraph{State Machine Diagrams}
-			 \textbf{DENNES}
+				\textbf{Description of the different states:}
+				\\ After the initialization of all peripherals connected to the hub, it enters \textit{Run Mode}.
+				The system stays in Run Mode until event happens, e.g. temperature or humidity reaches their limits,
+				a new module is connected, a module should be removed, the system is over-/underproduces, the log should be updated ect. 
+				\\\textbf{Standby:}If the system overproduces (produces more energy than there is users for), it can standby some of the energy-producing modules.
+				\\\textbf{Start:}Whenever a new module is connected it waits for the user to start up the module, either by using a start button on the hub or from the webpage.
+				\\\textbf{Stop:}To securely disconnect a module, the user must use the disconnect button (on the module or from web) to make sure all data is saved.
+				\\\textbf{Shut down:}If the system finds it self in a critical condition (temperature, humidity, communication problems) it shuts down it's connected modules,
+							        tries to save all available data to the log. Then it sends an message (in form of mail) to the user with the problem where after the modules
+							        powers off itself. 
+				\\\textbf{Connect module:}At first the system checks if it has seen exactly that module before, if that is the case it updates variables from the database
+									(uptime, produces etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
+				\\\textbf{Warning:}is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
+							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
+				
+			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+				\begin{centering}
+					 \includegraphics[width=0.5\textwidth]{images/statemachine.JPG}
+		 			\caption{Statemachine}
+			 	\end{centering}
+			\end{figure}
+
 	\subsubsection{Usage Domain Analysis}
 		\begin{itemize}
 			\item Use Cases - Put in diagrams of user + system (modules)
