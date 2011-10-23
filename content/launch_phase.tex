@@ -130,10 +130,10 @@
 									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
 				\\\textbf{Warning: }Is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
 							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
-				
+			\newpage
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
-					 \includegraphics[width=0.5\textwidth]{images/statemachine.JPG}
+					 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
 		 			\caption{Web user interface}
 			 	\end{centering}
 			\end{figure}
@@ -254,32 +254,16 @@
 		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
 		password e.g.
 	\subsubsection{Function Analysis}
-		
-		\begin{table}[h!]
-			\begin{tabular}{| l | c | c |}
-				\hline
-	Title																				& Complexity 	& Type	\\ \hline
-	A user should be able to connect a new module										& ~				& Update 				\\ \hline
-	A user should be able to disconnect a module										& ~				& Update	 			\\ \hline
-	A user should be able to start a module on the system and on the web page			& ~				& Update 				\\ \hline
-	A user should be able to stop a module on the system and on the web page			& ~				& Update 				\\ \hline
-	A user should be able to start the system on the system								& ~				& Update 				\\ \hline
-	A user should be able to see the production of a module on the web page				& ~				& Read/Calculating 		\\ \hline
-	A user should be able to see the consumption of a module on the web page			& ~				& Read/Calculating 		\\ \hline
-	A user should be able to see the temperature										& ~				& Read 					\\ \hline
-	A user should be able to see the humidity											& ~				& Read			 		\\ \hline
-	A user should be able to see the log of a module									& ~				& Read			 		\\ \hline
-	A user should be able to see the energy level on stoage modules						& ~				& Read/Calculating 		\\ \hline
-	The system should be able to initialize a module									& ~				& Update/Calculating 	\\ \hline
-	The system should be able to shutdown if the temperature gets too low				& ~				& Read/Calculating 		\\ \hline
-	The system should be able to set a module to standby								& ~				& Update 				\\ \hline
-	The system should be able to create a log file for new modules						& ~				& Update 				\\ \hline
-	The system should be able to electrical disconnect modules							& ~				& Update 				\\ \hline
-	The system should be able to stop modules											& ~				& Update	 			\\ \hline
-	The system should be able to start modules											& ~				& Update		 		\\ \hline
-				\end{tabular}
-			\end{table}
-
+	 \textbf{THIS}
+		\begin{itemize}
+			\item Recognise the direction of the device ( input, output, both ).
+			\item Start / Stop slave devices from web interface or physical module ( Control over the connected modules ).
+			\item Routes energy from the input to output ports.
+			\item Control power status of slave modules.
+			\item Log device data ( uptime of the port and power amount since connected ).
+			\item More to add here...
+		\end{itemize}
+	\newpage
 	\subsubsection{System Dynamics}
 			Put in example from eudp: %eudp.dk/index.php/Sequence_Diagrams
 			 \textbf{JESUS / DENNES}
@@ -288,7 +272,7 @@
 			\\Small diagram of how to initialize, start, stop, pause submodules.
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
-				 \includegraphics[width=0.6\textwidth]{images/communication_diagram.png}
+				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
 				\caption{...}
 		 	\end{centering}
 		\end{figure}		
