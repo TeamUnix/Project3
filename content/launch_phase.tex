@@ -20,14 +20,6 @@
 			F-2 & Routing &  &  \\ \hline
 			F-2.1 & Storage &  & Energy stored is routed to the consumers. \\ \hline
 			F-2.2 & Producers &  & Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
-			% &~  &~  &~  \\ \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
 		\end{tabular}
 		\caption{Functional: System shall do...}
 		\end{table}
@@ -43,14 +35,6 @@
 			NF-2 & Electrical &  &  \\ \hline
 			NF-2.1 & Voltage &  & The system work in a range 27.5V +-  10\%.\\ \hline
 			NF-2.2 & Current &  & Not defined yet... But very important \\ \hline
-			% &~  &~  &~  \\ \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
 		\end{tabular}
 		\caption{Non-Function: System shall be...}
 		\end{table}
@@ -71,14 +55,6 @@
 			B-3 & Disaster Avoid &  & Humidity and Temperature sensor will be placed inside the system housing. \\\hline
 			B-3.1 & Humidity &  & "When the humidity is high, stop system." \\\hline
 			B-3.2 & Temperature &  & "When temperature is high,  stop system." \\\hline
-			% &~  &~  &~  \\\hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
 		\end{tabular}
 		\caption{Behavioural: How the system shall react...}
 		\end{table}
@@ -90,14 +66,6 @@
 			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\ \hline
 			P-1 & Hardware &  &  \\ \hline
 			P-1.1 & Housing &  & The housing have to be water-proof and with a good heat dissipation. \\ \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
-			% &~  &~  &~  \\  \hline
 		\end{tabular}
 		\caption{Performance: How well does it have to be done...}
 		\end{table}
@@ -245,33 +213,46 @@
 				\end{table}
 	\newpage	
 	\subsubsection{Interface Analysis}
+	The hardware interface as seen from the users perspective. Note, new modules is connected in the back of the hub.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
 				\caption{User interacting with the physical hub module}
 		 	\end{centering}
 		\end{figure}
-		Some text about how the user interact with the physical hub module.
-	\newpage
+		\\ \textbf{The Hub diode states}
+		\begin{itemize}
+			\item \textbf{Green: }The modules is in Run mode, no problems detected.
+			\item \textbf{Yellow: }The module is powered on, but the user has not requested a startup of the module.
+							The yellow diode also light up if the user stops the system.
+			\item \textbf{Red: }An error has occurred in the system.
+		\end{itemize}
+		\textbf{Submodules state}
+		\begin{itemize}
+			\item \textbf{Green: }Constant light, the module is in Run mode, no problems detected. Flashing light, the module is in standby mode, set by the hub
+							due to over-/underproduction or other.
+			\item \textbf{Yellow: }Constant light, the module is plugged to the hub, but the user has not requested a startup yet or the module has been stopped.
+							During initialization (a startup has been requested) the diode flashes.
+			\item \textbf{Red: }An error has occurred with the connected module.
+		\end{itemize}
+		\newpage
+		The web-interface. In the little comic book user interaction with the system is shown.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
-				 \includegraphics[width=0.7\textwidth]{images/web_interface1.jpg}
-				\caption{Web interface; user interaction with the web interface1}
+				 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
+				\caption{Web interface; user interaction with the web interface}
 		 	\end{centering}
 		\end{figure}
 
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
-				 \includegraphics[width=0.7\textwidth]{images/web_interface2.jpg}
-				\caption{Web interface; user interaction with the web interface1}
+				 \includegraphics[width=0.68\textwidth]{images/web_interface2.jpg}
+				\caption{Web interface; user interaction with the web interface}
 		 	\end{centering}
 		\end{figure}			
-			
-		\begin{itemize}
-			\item User Interface Descriptions
-				
-			\item System Interface Descriptions
-		\end{itemize}
+		The energy systems webpage is open for everyone. Everyone can go to the webpage and see the status of the system and all of its sub-devices.
+		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
+		password e.g.
 	\subsubsection{Function Analysis}
 		From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.\\\\
 		When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.\\\\
@@ -313,6 +294,12 @@
 			\\Describe the data flow when interacting with other systems.
 			\\Diagram of how to put data on the web server.
 			\\Small diagram of how to initialize, start, stop, pause submodules.
+			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.6\textwidth]{images/communication_diagram.png}
+				\caption{...}
+		 	\end{centering}
+		\end{figure}		
 	\subsubsection{General Analysis Specification}
 		 \textbf{THIS}
 \subsection{General Architecture Design}
