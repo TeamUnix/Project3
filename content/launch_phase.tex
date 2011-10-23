@@ -107,9 +107,9 @@
 			\begin{itemize}
 				\item \textbf{Consumers} Units that consumes power (e.g. light, washing machine, electric car)
 				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
-				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed. 
+				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
 				\item \textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
-				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high.
+				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
 			\end{itemize}
 			\paragraph{Block Diagram: Events in the system}
 				\begin{itemize}
@@ -122,6 +122,9 @@
 					\item StartModule
 					\item StopModule
 					\item StandbyModule
+					\item CreateModuleLogFile
+					\item LoadModuleLogFile
+					\item UpdateModuleLogFile
 				\end{itemize}
 				\textbf{Table with all the above candidates and event combined:}
 				\begin{table}[h!]
@@ -137,37 +140,33 @@
 					StandbyModule & ~ & X & X & ~ & ~ \\ \hline
 					EnergyAboveLimit & ~ & X & ~ & ~ & ~ \\ \hline
 					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
-					% &~  &~  &~  \\  \hline
+					CreateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
+					LoadModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
+					UpdateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
 					\end{tabular}
 				\end{table}
 			\newpage
 			\paragraph{State Machine Diagrams}
-				\textbf{Description of the different states:}
-				\\ After the initialization of all peripherals connected to the hub, it enters \textit{Run Mode}.
-				The system stays in Run Mode until event happens, e.g. temperature or humidity reaches their limits,
-				a new module is connected, a module should be removed, the system is over-/underproduces, the log should be updated ect. 
-				\\\textbf{Standby:}If the system overproduces (produces more energy than there is users for), it can standby some of the energy-producing modules.
-				\\\textbf{Start:}Whenever a new module is connected it waits for the user to start up the module, either by using a start button on the hub or from the webpage.
-				\\\textbf{Stop:}To securely disconnect a module, the user must use the disconnect button (on the module or from web) to make sure all data is saved.
-				\\\textbf{Shut down:}If the system finds it self in a critical condition (temperature, humidity, communication problems) it shuts down it's connected modules,
-							        tries to save all available data to the log. Then it sends an message (in form of mail) to the user with the problem where after the modules
+				\textbf{ }
+				\textbf{Description of the different states: }
+				\\ After the initialization of all peripherals connected to the hub, the system enters it enters \textit{Run Mode}.
+				The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits,
+				a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated ect. 
+				\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it can standby some of the energy-producing modules.
+				\\\textbf{Start: }Whenever a new module is connected it waits for the user to start up the module, either by using a start button on the hub or from the webpage.
+				\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web) to make sure all data is saved.
+				\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shuts down it's connected modules,
+							        tries to save all available data to the log. Then it sends an message (in form of mail) to the user with the problem where after the module
 							        powers off itself. 
-				\\\textbf{Connect module:}At first the system checks if it has seen exactly that module before, if that is the case it updates variables from the database
-									(uptime, produces etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
-				\\\textbf{Warning:}is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
+				\\\textbf{Connect module: }At first the system checks if it has seen exactly that module before, if that is the case it updates variables from the database
+									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
+				\\\textbf{Warning: }Is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
 							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
 				
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
 					 \includegraphics[width=0.5\textwidth]{images/statemachine.JPG}
-		 			\caption{Statemachine}
+		 			\caption{Web user interface}
 			 	\end{centering}
 			\end{figure}
 
@@ -176,7 +175,28 @@
 			\item Use Cases - Put in diagrams of user + system (modules)
 		\end{itemize}
 	\subsubsection{Interface Analysis}
-			Put in the comic book story!  \textbf{JESUS}
+		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
+				\caption{User interacting with the physical hub module}
+		 	\end{centering}
+		\end{figure}
+		Some text about how the user interact with the physical hub module.
+	\newpage
+		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.7\textwidth]{images/web_interface1.jpg}
+				\caption{Web interface; user interaction with the web interface1}
+		 	\end{centering}
+		\end{figure}
+
+		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.7\textwidth]{images/web_interface2.jpg}
+				\caption{Web interface; user interaction with the web interface1}
+		 	\end{centering}
+		\end{figure}			
+			
 		\begin{itemize}
 			\item User Interface Descriptions
 				
@@ -195,15 +215,41 @@
 	\subsubsection{System Dynamics}
 			Put in example from eudp: %eudp.dk/index.php/Sequence_Diagrams
 			 \textbf{JESUS / DENNES}
-		\begin{itemize}
-			\item Communication Diagram
-			\item Sequence Diagram
-		\end{itemize}
+			\\Describe the data flow when interacting with other systems.
+			\\Diagram of how to put data on the web server.
+			\\Small diagram of how to initialize, start, stop, pause submodules.
 	\subsubsection{General Analysis Specification}
 		 \textbf{THIS}
 \subsection{General Architecture Design}
 	\subsubsection{Design Criteria}
-		Write in what parts should be used (mostly off the shelf things).  \textbf{THIS}
+		Write in what parts should be used (mostly off the shelf things).
+				\begin{table}[h!]
+					\begin{tabular}{| r | c | c | c | c | c |}
+					\hline
+					Issue & Critical & Very Important & Important & Less Important & Notes \\ \hline
+					Safe					& X & ~ & ~ & ~ & 1 \\ \hline
+					Performance 			& ~ & ~ & X & ~ & 2 \\ \hline
+					Usage 				& X & ~ & ~ & ~ & 3 \\ \hline
+					Reliability 			& X & ~ & ~ & ~ & 4 \\ \hline
+					Easy serviceable 		& ~ & X & ~ & ~ & 5 \\ \hline
+					Remote maintenance 	& ~ & ~ & X & ~ & 6 \\ \hline
+					Cost effective 			& ~ & ~ & ~ & X & 7 \\ \hline
+					\end{tabular}
+				\end{table}
+			Notes:
+			\begin{enumerate}
+			\item The safety is a very important factor, as the system is meant as a showoff system for high-school students, who should
+			be able to be near the system without hurting themselves or the system.
+			\item The performance in the system is not critical when considering it from the users perspective. It doesn't matter if it takes a few seconds before the system responds the user.
+			But the system should still be able to react fast in order not to harm it self, but also to get a high effectiveness. 
+			\item The system should be easy to use. All kinds of people should be able to use the system without any specific training.
+			Connecting of new devices and doing administrative jobs on the system a small walk through of the system is required. 
+			\item Errors must not occur in the system. The hub is the central nerve in the whole system, therefore if the hub does not run, non of the subsystems does and no energy is routed.
+			\item The user of the system should be able to find eventual errors on the system by him self, with help from a good error log created by the system.
+			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
+			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
+			\end{enumerate}
+				
 	\subsubsection{Subsystem Design}
 		\begin{itemize}
 			\item Subsystem Architecture Diagram
