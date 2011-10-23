@@ -227,6 +227,8 @@
 							The yellow diode also light up if the user stops the system.
 			\item \textbf{Red: }An error has occurred in the system.
 		\end{itemize}
+		If the hub is in the init state and the button is pushed, the green button will light up when the system has settles. If an error occurs the red one will light up.
+		When the hub is in Run mode and the button is pressed the hub powers down all the submodules where after it powers down it self.
 		\textbf{Submodules state}
 		\begin{itemize}
 			\item \textbf{Green: }Constant light, the module is in Run mode, no problems detected. Flashing light, the module is in standby mode, set by the hub
@@ -235,6 +237,10 @@
 							During initialization (a startup has been requested) the diode flashes.
 			\item \textbf{Red: }An error has occurred with the connected module.
 		\end{itemize}
+		The button placed at the submodules does almost the same as the hub button, except they only concert one specific submodule. When a submodule 
+		is in init mode and the button is pressed, the yellow diode starts flashing (indicating that the system is initializing and trying to start the submodule), whereafter
+		the green diode will light up if the submodule has started up. If an error has occurred the red diode will light up. 
+		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
 		\newpage
 		The web-interface. In the little comic book user interaction with the system is shown.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
@@ -325,12 +331,6 @@
 			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
-				
-	\subsubsection{Subsystem Design}
-		\begin{itemize}
-			\item Subsystem Architecture Diagram
-			\item Detailed Block Diagrams
-		\end{itemize}
 	\subsubsection{Architecture Dynamics}
 		Hubs communication with submodules
 		\begin{itemize}
@@ -340,3 +340,5 @@
 	A lot of technical stuffs. 
 	\subsubsection{Hardware Specifications}
 	\subsubsection{Software Specifications}
+
+
