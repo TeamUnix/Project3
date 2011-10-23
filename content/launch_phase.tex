@@ -254,6 +254,7 @@
 		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
 		password e.g.
 	\subsubsection{Function Analysis}
+<<<<<<< HEAD
 	 \textbf{THIS}
 		\begin{itemize}
 			\item Recognise the direction of the device ( input, output, both ).
@@ -264,6 +265,42 @@
 			\item More to add here...
 		\end{itemize}
 	\newpage
+=======
+		From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.\\\\
+		When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.\\\\
+		Functions can be grouped into types. There are four different types of functions:\\\\
+		\textit{Update} is a type defining functions which are activated by a problem or application domain event, and which results in a change in the model's state.\\\\
+		The type \textit{Signal} defines a function which is triggered by a change in the model's state. Running the function always results in a reaction to its surroundings: that is either the reaction is a display to the actors in the problem domain or else the reaction is a direct intervention in the problem domain.\\\\
+		When an actor has need for information the function of type \textit{Read} is activated. The function is displaying the relevant data of the model to the actor.\\\\
+		Finally, the \textit{Calculating} function is activated when an actor provides information, which should be included in a computation which also involves data from the model. The function returns its computed result to a display.\\\\
+		When all functions are found they must be defined by their type and complexity, as below.
+		\begin{table}[h!]
+			\begin{tabular}{| l | c | c |}
+				\hline
+	Title																				& Complexity 	& Type	\\ \hline
+	A user should be able to connect a new module										& S				& Update 				\\ \hline
+	A user should be able to disconnect a module										& S				& Update	 			\\ \hline
+	A user should be able to start a module on the system and on the web page			& M				& Update 				\\ \hline
+	A user should be able to stop a module on the system and on the web page			& M				& Update 				\\ \hline
+	A user should be able to start the system on the system								& S				& Update 				\\ \hline
+	A user should be able to see the production of a module on the web page				& M				& Read/Calculating 		\\ \hline
+	A user should be able to see the consumption of a module on the web page			& M				& Read/Calculating 		\\ \hline
+	A user should be able to see the temperature										& M				& Read 					\\ \hline
+	A user should be able to see the humidity											& M				& Read			 		\\ \hline
+	A user should be able to see the log of a module									& M				& Read			 		\\ \hline
+	A user should be able to see the energy level on stoage modules						& M				& Read/Calculating 		\\ \hline
+	The system should be able to initialize a module									& C				& Update/Calculating 	\\ \hline
+	The system should be able to shutdown if the temperature gets too low				& M				& Read/Calculating 		\\ \hline
+	The system should be able to set a module to standby								& M				& Update 				\\ \hline
+	The system should be able to create a log file for new modules						& C				& Update 				\\ \hline
+	The system should be able to electrical disconnect modules							& C				& Update 				\\ \hline
+	The system should be able to stop modules											& M				& Update	 			\\ \hline
+	The system should be able to start modules											& M				& Update		 		\\ \hline
+				\end{tabular}
+				\caption{S = simple. M = medium. C = complex. VC = very complex}
+			\end{table}
+
+>>>>>>> origin/master
 	\subsubsection{System Dynamics}
 			Put in example from eudp: %eudp.dk/index.php/Sequence_Diagrams
 			 \textbf{JESUS / DENNES}
