@@ -274,14 +274,31 @@
 		\end{itemize}
 	\subsubsection{Function Analysis}
 		
-		\begin{itemize}
-			\item Recognise the direction of the device ( input, output, both ).
-			\item Start / Stop slave devices from web interface or physical module ( Control over the connected modules ).
-			\item Routes energy from the input to output ports.
-			\item Control power status of slave modules.
-			\item Log device data ( uptime of the port and power amount since connected ).
-			\item More to add here...
-		\end{itemize}
+		\begin{table}[h!]
+			\begin{tabular}{| l | c | c |}
+				\hline
+	Title																				& Complexity 	& Type	\\ \hline
+	A user should be able to connect a new module										& ~				& Update 				\\ \hline
+	A user should be able to disconnect a module										& ~				& Update	 			\\ \hline
+	A user should be able to start a module on the system and on the web page			& ~				& Update 				\\ \hline
+	A user should be able to stop a module on the system and on the web page			& ~				& Update 				\\ \hline
+	A user should be able to start the system on the system								& ~				& Update 				\\ \hline
+	A user should be able to see the production of a module on the web page				& ~				& Read/Calculating 		\\ \hline
+	A user should be able to see the consumption of a module on the web page			& ~				& Read/Calculating 		\\ \hline
+	A user should be able to see the temperature										& ~				& Read 					\\ \hline
+	A user should be able to see the humidity											& ~				& Read			 		\\ \hline
+	A user should be able to see the log of a module									& ~				& Read			 		\\ \hline
+	A user should be able to see the energy level on stoage modules						& ~				& Read/Calculating 		\\ \hline
+	The system should be able to initialize a module									& ~				& Update/Calculating 	\\ \hline
+	The system should be able to shutdown if the temperature gets too low				& ~				& Read/Calculating 		\\ \hline
+	The system should be able to set a module to standby								& ~				& Update 				\\ \hline
+	The system should be able to create a log file for new modules						& ~				& Update 				\\ \hline
+	The system should be able to electrical disconnect modules							& ~				& Update 				\\ \hline
+	The system should be able to stop modules											& ~				& Update	 			\\ \hline
+	The system should be able to start modules											& ~				& Update		 		\\ \hline
+				\end{tabular}
+			\end{table}
+
 	\subsubsection{System Dynamics}
 			Put in example from eudp: %eudp.dk/index.php/Sequence_Diagrams
 			 \textbf{JESUS / DENNES}
