@@ -301,7 +301,7 @@
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
-				\caption{...}
+				\caption{Interaction between systems; Web browser and Hub both connected to the database}
 		 	\end{centering}
 		\end{figure}		
 \subsection{General Architecture Design}
@@ -333,11 +333,16 @@
 			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
+	\newpage
 	\subsubsection{Architecture Dynamics}
 		Hubs communication with submodules
-		\begin{itemize}
-			\item Sequence Diagrams
-		\end{itemize}
+		\textbf{Sequence Diagrams}
+		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
+				\caption{Sequence diagram; Communication between the system and external systems.}
+		 	\end{centering}
+		\end{figure}	
 \subsection{Technical Platform}
 	A lot of technical stuffs. 
 	\subsubsection{Hardware Specifications}
