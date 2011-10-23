@@ -172,9 +172,79 @@
 			\end{figure}
 
 	\subsubsection{Usage Domain Analysis}
-		\begin{itemize}
-			\item Use Cases - Put in diagrams of user + system (modules)
-		\end{itemize}
+		\textbf{Web user - Log in}
+		\\\textit{Description: }
+		The log in user is any user with log in to the web interface for the system. This user can manage the energy hub from a browser on a computer.
+		\\\textbf{Web user - Visitors}
+		\\\textit{Description: }
+		This visitor of the web interface can only see info and data in the browser. This user is not able to manage anything.
+		\\\textbf{Hub}
+		\\\textit{Description: }
+		The Hub is the system. the system sometimes have to do something that is not possible for other users.
+		\\\textbf{Engineer}
+		\\\textit{Description: }
+		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system.
+		\\\textbf{On system user}
+		\\\textit{Description: }
+		On system user is any user that go to the physical system and operates on is. This user is able to start and stop parts of the system.
+		\\\\\textbf{Plug in module}
+		\\\textit{Description: }
+		The user should be able to plug in different modules to the system, this is only possible when you stand physical at the system, so this use case is only included for the \textit{On system user}.
+		\\\textbf{Unplug module}
+		\\\textit{Description: }
+		Like plugging in modules this use case is only included for the \textit{On system user}.
+		\\\textbf{Start/Stop module}
+		\\\textit{Description: }
+		The capability of turning modules on and off is included in the \textit{On system user}, \textit{Engineer}, \textit{Hub} and the \textit{Web user - Log in}.
+		\\\textbf{Start/Stop system}
+		\\\textit{Description: }
+		The The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
+		\\\textbf{View Production/Consumption of module}
+		\\\textit{Description: }
+		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{View temperature}
+		\\\textit{Description: }
+		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{View log of module}
+		\\\textit{Description: }
+		It is possible for the \textit{Web user - Log in}, \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{View humidity}
+		\\\textit{Description: }
+		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{Initialize module}
+		\\\textit{Description: }
+		It is only possible for the \textit{Hub} to initialize modules.
+		\\\textbf{Standby a module}
+		\\\textit{Description: }
+		Setting modules in standby mode is only possible for the \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{View energy level of storage modules}
+		\\\textit{Description: }
+		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+		\\\textbf{Create log file}
+		\\\textit{Description: }
+		Creating a log file for a module is only possible for the \textit{Hub}.
+		\\\textbf{Disconnect module}
+		\\\textit{Description: }
+		Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
+		\\\begin{table}[h!]
+					\begin{tabular}{| r | c | c |}
+					\hline
+					Number	& On system user	& System \\ \hline
+					1		& Plug in module	& ~ \\ \hline
+					2		& ~					& Initialize module \\ \hline
+					3		& Start module		& ~ \\ \hline
+					4		& ~					& Turning on the module \\ \hline
+					\end{tabular}
+				\end{table}
+		\\\begin{table}[h!]
+					\begin{tabular}{| r | c | c |}
+					\hline
+					Number	& Hub				& System \\ \hline
+					1		& Check the power production (it is to low)	& ~ \\ \hline
+					2		& ~											& Setting the module to standby \\ \hline
+					\end{tabular}
+				\end{table}
+		
 	\subsubsection{Interface Analysis}
 			Put in the comic book story!  \textbf{JESUS}
 		\begin{itemize}
