@@ -2,6 +2,7 @@
 \section{Launch Phase}
 \subsection{General Analysis}
 	\subsubsection{Requirements	 Analysis}
+		Remember to define the max/min temp+humidity (ex. minimum temp 0deg)
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
 			\item Non-functional Requirements ("system shall be 'requirement' ")
@@ -76,6 +77,7 @@
 				\item \textbf{Consumers} Units that consumes power (e.g. light, washing machine, electric car)
 				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
 				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
+				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce enough energy to the consumers.
 				\item \textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
 				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
 			\end{itemize}
@@ -96,21 +98,21 @@
 				\end{itemize}
 				\textbf{Table with all the above candidates and event combined:}
 				\begin{table}[h!]
-					\begin{tabular}{| r | c | c | c | c | c |}
+					\begin{tabular}{| r | c | c | c | c | c | c |}
 					\hline
-					~ & Consumers & Producers & Storage & Temp & Humidity \\ \hline
-					TempBellowLimit & ~ & ~ & ~ & X & ~ \\ \hline
-					TempAboveLimit & ~ & ~ & ~ & X & ~ \\ \hline
-					HumidityAboveLimit & ~ & ~ & ~ & ~ & X \\ \hline
-					InitModule & X & X & X & ~ & ~ \\ \hline
-					StartModule & X & X & X & ~ & ~ \\ \hline
-					StopModule & X & X & X & ~ & ~ \\ \hline
-					StandbyModule & ~ & X & X & ~ & ~ \\ \hline
-					EnergyAboveLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					CreateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
-					LoadModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
-					UpdateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
+					~ & Consumers & Producers & Storage & Grid &Temp & Humidity \\ \hline
+					TempBellowLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
+					TempAboveLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
+					HumidityAboveLimit & ~ & ~ & ~ & ~ & ~ & X \\ \hline
+					InitModule & X & X & X & ~ & ~ & ~ \\ \hline
+					StartModule & X & X & X & X & ~ & ~ \\ \hline
+					StopModule & X & X & X & ~ & ~ & ~ \\ \hline
+					StandbyModule & ~ & X & X & X & ~ & ~ \\ \hline
+					EnergyAboveLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
+					EnergyBelowLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
+					CreateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
+					LoadModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
+					UpdateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
 					\end{tabular}
 				\end{table}
 			\newpage
@@ -342,8 +344,13 @@
 		 	\end{centering}
 		\end{figure}	
 \subsection{Technical Platform}
-	A lot of technical stuffs. 
-	\subsubsection{Hardware Specifications}
-	\subsubsection{Software Specifications}
 
+	\subsubsection{Hardware Specifications}
+	Embedded Artists LPC2478-32 Developer kit.
+	\\Temperature sensor
+	\\Humidity sensor
+	\\Power Line communication module
+	\subsubsection{Software Specifications}
+	What software things should be implemented ?
+	\\
 
