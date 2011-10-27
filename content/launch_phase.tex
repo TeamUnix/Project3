@@ -141,9 +141,10 @@
 			\subsubsection{State Machine Diagrams}
 				\textbf{ }\\
 				\textbf{Description of the different states: }
-				\\ After the initialization of all modules connected to the hub, the system is in  \textit{Run Mode}.
-				The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits,
-				a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated ect. 
+				\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
+				\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub 							interface). 
+				\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits,
+				a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
 				\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it will standby some of the energy-producing modules.
 				\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module, either by using a start button on the hub or from the web interface.
 				\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web interface) to make sure all data is saved.
@@ -152,8 +153,8 @@
 							        powers off itself. 
 				\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database
 									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
-				\\\textbf{Warning: }Is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
-							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
+				\\\textbf{Warning: }Is sent if the system tries to set a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
+							    After the timeout state, the system returns to run state.
 			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
 					 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
@@ -189,7 +190,7 @@
 		The capability of turning modules on and off is included in the \textit{On system user}, \textit{Engineer}, \textit{Hub} and the \textit{Web user - Log in}.
 		\\\textbf{Start/Stop system}
 		\\\textit{Description: }
-		The The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
+		The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
 		\\\textbf{View Production/Consumption of module}
 		\\\textit{Description: }
 		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
@@ -237,15 +238,22 @@
 					\end{tabular}
 					\caption{Example of \textit{hub} user interaction}
 				\end{table}	
+<<<<<<< HEAD
 	\subsection{Interface Analysis}
 	The hardware interface as seen from the users perspective. Note, new modules is connected in the back of the hub.
+=======
+	\subsubsection{Interface Analysis}
+	\textbf{Physical interface: } The hardware interface as seen from the users perspective. Note, new modules is connected on the back of the hub.
+	
+>>>>>>> 84d715140e39cac016cf8def842e338c642cfa28
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
 				\caption{User interacting with the physical hub module}
 		 	\end{centering}
 		\end{figure}
-		\\ \textbf{The Hub diode states}
+		\textbf{ } \\ 
+		\textbf{The Hub diode states}
 		\begin{itemize}
 			\item \textbf{Green: }The modules is in Run mode, no problems detected.
 			\item \textbf{Yellow: }The module is powered on, but the user has not requested a startup of the module.
@@ -266,6 +274,7 @@
 		the green diode will light up if the submodule has started up. If an error has occurred the red diode will light up. 
 		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
 		The web-interface. In the little comic book user interaction with the system is shown.
+		\\ \\\textbf{WebInterface: }
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
