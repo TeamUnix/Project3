@@ -16,11 +16,12 @@
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 			F-1 & Communication 	&  \\ \hline
 			F-1.1 & Web Server 		& The hub should be able to put data on a web-server. \\ \hline
-			F-1.2 & System 		& The hub should be able to communicate with a connected module via. power line communication. \\ \hline
+			F-1.2 & System 		& The hub should be able to communicate with a connected module through power line communication. \\ \hline
 			F-1.2.1 & Protocol 		& Not Defined yet... \\ \hline
 			F-2 & Routing 			&  \\ \hline
-			F-2.1 & Storage 		& Energy stored is routed to the consumers. \\ \hline
-			F-2.2 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
+			F-2.1 & Direction		& When a module is connected the system should automatically find out if it is an producer-, storage- or consumer module.\\ \hline
+			F-2.2 & Storage 		& Energy stored is routed to the consumers. \\ \hline
+			F-2.3 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
 		\end{tabular}
 		\caption{Functional: System shall do...}
 		\end{table}
@@ -34,7 +35,7 @@
 			NF-1.2 & HW Interface 	& Simple; 3 diodes to show the status for each module and 1 button to change the status \\ \hline
 			NF-2 & Electrical 		&  \\ \hline
 			NF-2.1 & Voltage 		& The input and output ports should work in a range 30V +/-  10\%.\\ \hline
-			NF-2.2 & Current 		& The maximum current is defined from the maximum current the wind turbine and the photovoltaic cells can produce. \\ \hline
+			NF-2.2 & Current 		& The maximum current on each port is defined to maximum 100 Amperes. \\ \hline
 		\end{tabular}
 		\caption{Non-Function: System shall be...}
 		\end{table}
@@ -45,16 +46,17 @@
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 			B-1 & Status &  \\\hline
-			B-1.1 & Web Interface 	& Warning will be posted in the web interface. \\\hline
-			B-1.2 & Physical 		& LEDs will show the current status of the connected device: Running / Idle / Error / Initializing. \\\hline
-			B-1.3 & Report 			& An e-mail will be sent to the defined user if an error occurs. \\\hline
-			B-2 & Energy Control 	&  \\\hline
-			B-2.1 & Over-production 	& Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
-			B-2.2 & Under-production & If the producing modules does not produce enough energy. \\\hline
-			B-2.3 & Normal-production & The energy will be routed from the input devices to the output devices. \\\hline
-			B-3 & Disaster Avoid & Humidity and Temperature sensor will be placed inside the system housing. \\\hline
-			B-3.1 & Humidity 		& "When the humidity is high, stop system." \\\hline
-			B-3.2 & Temperature	& "When temperature is high,  stop system." \\\hline
+			B-1.1 & Web Interface 	 & Warnings will be posted in the web interface. \\\hline
+			B-1.2 & Physical 		 & LEDs will show the current status of the connected device: Running / Idle / Error / Initializing. \\\hline
+			B-1.3 & Report 			 & An e-mail will be sent to the defined user if an error occurs. \\\hline
+			B-2 & Energy Control 	 &  \\\hline
+			B-2.1 & Over-production 	 & Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
+			B-2.2 & Under-production  & If the producing modules does not produce enough energy, energy is taken from the storage
+				      modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
+			B-3 & Critical Error 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
+			B-3.1 & Humidity 		 & When the humidity is above the maximum level 70\%, stop the system. \\\hline
+			B-3.2 & Temperature High& When the temperature is higher than 65 degreese,  stop the system.\\\hline
+			B-3.2 & Temperature Low & When the temperature is below 0 degreese, stop the system\\\hline
 		\end{tabular}
 		\caption{Behavioural: How the system shall react...}
 		\end{table}
@@ -65,28 +67,26 @@
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 			P-1 & Hardware 		&  \\ \hline
-			P-1.1 & Housing 		& The housing have to be water-proof and with a good heat dissipation. \\ \hline
+			P-1.1 & Housing 		& The housing have to be water-proof, to not harm the system.\\ \hline
 		\end{tabular}
 		\caption{Performance: How well does it have to be done...}
 		\end{table}
-		\newpage
 	\subsubsection{Problem Domain Analysis}
 			\paragraph{Block Diagram:}
-			
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
-					 \includegraphics[width=0.6\textwidth]{images/block_diagram.png}
-		 			\caption{Web user interface}
+					 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
+		 			\caption{Block diagram}
 			 	\end{centering}
 			\end{figure}
 			
 			\paragraph{Block Diagram: Candidates in the system}
 			\begin{itemize}
-				\item \textbf{Consumers} Units that consumes power (e.g. light, washing machine, electric car)
+				\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
 				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
 				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
 				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce enough energy to the consumers.
-				\item \textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
+				\item \textbf{Temperature:} Unit that measures the temperature where the system is placed. If the temperature is too high or low it might damage the hardware.
 				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
 			\end{itemize}
 			\paragraph{Block Diagram: Events in the system}
@@ -151,16 +151,16 @@
 	\subsubsection{Usage Domain Analysis}
 		\textbf{Web user - Log in}
 		\\\textit{Description: }
-		An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to almost anything.
+		An user with administrator privileges can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device.
 		\\\textbf{Web user - Visitors}
 		\\\textit{Description: }
-		This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
+		This visitor of the web interface can only see info and data in the browser. This user is not able to manage anything.
 		\\\textbf{Hub}
 		\\\textit{Description: }
-		The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
+		The Hub routes energy from producers to consumers or storage devices. It will keep the status of each module connected to it updated in is log file and web-interface.
 		\\\textbf{Engineer}
 		\\\textit{Description: }
-		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system and have permission to everything.
+		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system.
 		\\\textbf{On system user}
 		\\\textit{Description: }
 		On system user is any user that go to the physical system and operates on it. This user is able to start and stop parts of the system.
@@ -282,43 +282,25 @@
 		\begin{table}[h!]
 			\begin{tabular}{| l | c | c |}
 				\hline
-	Title																			& Complexity 	& Type				\\ \hline
-	Connect new module	&&
-	\\A user should be able to connect a new module									& S				& Update 			\\ \hline
-	Disconnect module	&&
-	\\A user should be able to disconnect a module									& S				& Update	 		\\ \hline
-	Start module	&&
-	\\A user should be able to start a module on the system and on the web page		& M				& Update 			\\ \hline
-	Stop module	&&
-	\\A user should be able to stop a module on the system and on the web page		& M				& Update 			\\ \hline
-	Start system	&&
-	\\A user should be able to start the system on the system						& S				& Update 			\\ \hline
-	Show production of module	&&
-	\\A user should be able to see the production of a module on the web page		& M				& Read/Calculating 	\\ \hline
-	Show consumption of module	&&
-	\\A user should be able to see the consumption of a module on the web page		& M				& Read/Calculating 	\\ \hline
-	Show temperature	&&
-	\\A user should be able to see the temperature									& M				& Read 				\\ \hline
-	Show humidity	&&
-	\\A user should be able to see the humidity										& M				& Read				\\ \hline
-	Show log of module	&&
-	\\A user should be able to see the log of a module								& M				& Read				\\ \hline
-	Show energy level on storage module	&&
-	\\A user should be able to see the energy level on storage modules				& M				& Read/Calculating 	\\ \hline
-	Initialize module	&&
-	\\The system should be able to initialize a module								& C				& Update/Calculating\\ \hline
-	Shutdown on too high temperature	&&
-	\\The system should be able to shutdown if the temperature gets too low			& M				& Read/Calculating 	\\ \hline
-	Standby module	&&
-	\\The system should be able to set a module to standby							& M				& Update 			\\ \hline
-	Create log file	&&
-	\\The system should be able to create a log file for new modules				& C				& Update 			\\ \hline
-	Electrical disconnect module	&&
-	\\The system should be able to electrical disconnect modules					& C				& Update 			\\ \hline
-	Stop module	&&
-	\\The system should be able to stop modules										& M				& Update	 		\\ \hline
-	Start module	&&
-	\\The system should be able to start modules									& M				& Update		 	\\ \hline
+	Title																	& Complexity 		& Type			\\ \hline
+	A user should be able to connect a new module								& S				& Update 			\\ \hline
+	A user should be able to disconnect a module									& S				& Update	 		\\ \hline
+	A user should be able to start a module on the system and on the web page			& M				& Update 			\\ \hline
+	A user should be able to stop a module on the system and on the web page			& M				& Update 			\\ \hline
+	A user should be able to start the system on the system							& S				& Update 			\\ \hline
+	A user should be able to see the production of a module on the web page			& M				& Read/Calculating 	\\ \hline
+	A user should be able to see the consumption of a module on the web page			& M				& Read/Calculating 	\\ \hline
+	A user should be able to see the temperature									& M				& Read 			\\ \hline
+	A user should be able to see the humidity										& M				& Read			\\ \hline
+	A user should be able to see the log of a module								& M				& Read			\\ \hline
+	A user should be able to see the energy level on stoage modules					& M				& Read/Calculating 	\\ \hline
+	The system should be able to initialize a module								& C				& Update/Calculating\\ \hline
+	The system should be able to shutdown if the temperature gets too low				& M				& Read/Calculating 	\\ \hline
+	The system should be able to set a module to standby							& M				& Update 			\\ \hline
+	The system should be able to create a log file for new modules					& C				& Update 			\\ \hline
+	The system should be able to electrical disconnect modules						& C				& Update 			\\ \hline
+	The system should be able to stop modules									& M				& Update	 		\\ \hline
+	The system should be able to start modules									& M				& Update		 	\\ \hline
 				\end{tabular}
 				\caption{S = simple. M = medium. C = complex. VC = very complex}
 			\end{table}
