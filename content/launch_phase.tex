@@ -151,16 +151,16 @@
 	\subsubsection{Usage Domain Analysis}
 		\textbf{Web user - Log in}
 		\\\textit{Description: }
-		An user with administrator privileges can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device.
+		An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to almost anything.
 		\\\textbf{Web user - Visitors}
 		\\\textit{Description: }
-		This visitor of the web interface can only see info and data in the browser. This user is not able to manage anything.
+		This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
 		\\\textbf{Hub}
 		\\\textit{Description: }
-		The Hub routes energy from producers to consumers or storage devices. It will keep the status of each module connected to it updated in is log file and web-interface.
+		The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
 		\\\textbf{Engineer}
 		\\\textit{Description: }
-		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system.
+		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system and have permission to everything.
 		\\\textbf{On system user}
 		\\\textit{Description: }
 		On system user is any user that go to the physical system and operates on it. This user is able to start and stop parts of the system.
@@ -282,25 +282,43 @@
 		\begin{table}[h!]
 			\begin{tabular}{| l | c | c |}
 				\hline
-	Title																	& Complexity 		& Type			\\ \hline
-	A user should be able to connect a new module								& S				& Update 			\\ \hline
-	A user should be able to disconnect a module									& S				& Update	 		\\ \hline
-	A user should be able to start a module on the system and on the web page			& M				& Update 			\\ \hline
-	A user should be able to stop a module on the system and on the web page			& M				& Update 			\\ \hline
-	A user should be able to start the system on the system							& S				& Update 			\\ \hline
-	A user should be able to see the production of a module on the web page			& M				& Read/Calculating 	\\ \hline
-	A user should be able to see the consumption of a module on the web page			& M				& Read/Calculating 	\\ \hline
-	A user should be able to see the temperature									& M				& Read 			\\ \hline
-	A user should be able to see the humidity										& M				& Read			\\ \hline
-	A user should be able to see the log of a module								& M				& Read			\\ \hline
-	A user should be able to see the energy level on stoage modules					& M				& Read/Calculating 	\\ \hline
-	The system should be able to initialize a module								& C				& Update/Calculating\\ \hline
-	The system should be able to shutdown if the temperature gets too low				& M				& Read/Calculating 	\\ \hline
-	The system should be able to set a module to standby							& M				& Update 			\\ \hline
-	The system should be able to create a log file for new modules					& C				& Update 			\\ \hline
-	The system should be able to electrical disconnect modules						& C				& Update 			\\ \hline
-	The system should be able to stop modules									& M				& Update	 		\\ \hline
-	The system should be able to start modules									& M				& Update		 	\\ \hline
+	Title																			& Complexity 	& Type				\\ \hline
+	Connect new module	&&
+	\\A user should be able to connect a new module									& S				& Update 			\\ \hline
+	Disconnect module	&&
+	\\A user should be able to disconnect a module									& S				& Update	 		\\ \hline
+	Start module	&&
+	\\A user should be able to start a module on the system and on the web page		& M				& Update 			\\ \hline
+	Stop module	&&
+	\\A user should be able to stop a module on the system and on the web page		& M				& Update 			\\ \hline
+	Start system	&&
+	\\A user should be able to start the system on the system						& S				& Update 			\\ \hline
+	Show production of module	&&
+	\\A user should be able to see the production of a module on the web page		& M				& Read/Calculating 	\\ \hline
+	Show consumption of module	&&
+	\\A user should be able to see the consumption of a module on the web page		& M				& Read/Calculating 	\\ \hline
+	Show temperature	&&
+	\\A user should be able to see the temperature									& M				& Read 				\\ \hline
+	Show humidity	&&
+	\\A user should be able to see the humidity										& M				& Read				\\ \hline
+	Show log of module	&&
+	\\A user should be able to see the log of a module								& M				& Read				\\ \hline
+	Show energy level on storage module	&&
+	\\A user should be able to see the energy level on storage modules				& M				& Read/Calculating 	\\ \hline
+	Initialize module	&&
+	\\The system should be able to initialize a module								& C				& Update/Calculating\\ \hline
+	Shutdown on too high temperature	&&
+	\\The system should be able to shutdown if the temperature gets too low			& M				& Read/Calculating 	\\ \hline
+	Standby module	&&
+	\\The system should be able to set a module to standby							& M				& Update 			\\ \hline
+	Create log file	&&
+	\\The system should be able to create a log file for new modules				& C				& Update 			\\ \hline
+	Electrical disconnect module	&&
+	\\The system should be able to electrical disconnect modules					& C				& Update 			\\ \hline
+	Stop module	&&
+	\\The system should be able to stop modules										& M				& Update	 		\\ \hline
+	Start module	&&
+	\\The system should be able to start modules									& M				& Update		 	\\ \hline
 				\end{tabular}
 				\caption{S = simple. M = medium. C = complex. VC = very complex}
 			\end{table}
