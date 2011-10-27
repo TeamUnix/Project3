@@ -389,4 +389,31 @@
 	\subsubsection{Software Specifications}
 	What software things should be implemented ?
 	\\
-
+	\begin{table}[h!]
+			\begin{tabular}{| l | c | c | c |}
+				\hline
+	Class							& Interface	& HW	& SW	\\ \hline
+	\textbf{System:}				&&&							\\ \hline
+	ARM								& DIG		&		& X 	\\ \hline
+	PLC module						& DIG/ANA	& X		& X 	\\ \hline
+	Power switch					& DIG/ANA	& X		& X 	\\ \hline
+	Digital Converter				& DIG/ANA	& X		& X 	\\ \hline
+	Current sensor					& DIG/ANA	& X		& X 	\\ \hline
+	\textbf{Sensor:}				&&&							\\ \hline
+	Temperature						& ANA		& X		& 	 	\\ \hline
+	Humidity						& ANA		& X		& 		\\ \hline
+	\textbf{Web interface:}			&&&							\\ \hline
+	Ethernet						& DIG		& 		& X	 	\\ \hline
+	Web server						& DIG		& 		& X		\\ \hline
+	\textbf{Other:}					&&&							\\ \hline
+	Grid							& ANA		& X		& 	 	\\ \hline
+	\textbf{Modules:}				&&&							\\ \hline
+	Storage							& DIG		& 		& X	 	\\ \hline
+	Producer						& DIG		& 		& X		\\ \hline
+	Consumer						& DIG		& 		& X		\\ \hline
+	\textbf{Physical interface:}	&&&							\\ \hline
+	Interface						& DIG/ANA	& X		& X	 	\\ \hline
+	Indicator						& DIG/ANA	& X		& X		\\ \hline
+				\end{tabular}
+				\caption{DIG = Digital. ANA = Analog. HW = Hardware. SW = Software}
+			\end{table}
