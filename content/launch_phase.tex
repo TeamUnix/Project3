@@ -10,7 +10,7 @@
 			\item Performance Requirements ("how well does it have to be done")
 		\end{itemize}
 		% Functional Table
-		\begin{table}[h!]
+		\begin{table}[H]
 		\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
@@ -26,7 +26,7 @@
 		\caption{Functional: System shall do...}
 		\end{table}
 		% Non-Function Table
-		\begin{table}[h!]
+		\begin{table}[H]
 			\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
@@ -39,9 +39,9 @@
 		\end{tabular}
 		\caption{Non-Function: System shall be...}
 		\end{table}
-		\newpage
+
 		% Behavioural Table
-		\begin{table}[h!]
+		\begin{table}[H]
 			\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
@@ -62,7 +62,7 @@
 		\end{table}
 		
 		% Perfomance Table
-		\begin{table}[h!]
+		\begin{table}[H]
 			\begin{tabular} [b] {| c | p{3cm} | p{10cm} |}
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
@@ -73,7 +73,7 @@
 		\end{table}
 	\subsubsection{Problem Domain Analysis}
 			\paragraph{Block Diagram:}
-			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
 					 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
 		 			\caption{Block diagram}
@@ -116,7 +116,7 @@
 					\item UpdateServer
 				\end{itemize}
 				\textbf{Table with all the above candidates and event combined:}
-				\begin{table}[h!]
+				\begin{table}[H]
 					\begin{tabular}{| r | c |c | c | c | c | c | c | c | c |}
 					\hline
 					~ & 					P SW & Cons. & Prod. & Storage & Grid & Curr Sens & Temp & Humi & Ether. \\ \hline
@@ -137,7 +137,6 @@
 					UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
 					\end{tabular}
 				\end{table}
-			\newpage
 			\paragraph{State Machine Diagrams}
 				\textbf{ }\\
 				\textbf{Description of the different states: }
@@ -154,8 +153,7 @@
 									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
 				\\\textbf{Warning: }Is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
 							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
-			\newpage
-			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
 					 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
 		 			\caption{Web user interface}
@@ -237,8 +235,7 @@
 					2		& ~											& Setting the module to standby \\ \hline
 					\end{tabular}
 					\caption{Example of \textit{hub} user interaction}
-				\end{table}
-	\newpage	
+				\end{table}	
 	\subsubsection{Interface Analysis}
 	The hardware interface as seen from the users perspective. Note, new modules is connected in the back of the hub.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
@@ -267,7 +264,6 @@
 		When a submodule is in init mode and the button is pressed, the yellow diode starts flashing (indicating that the system is initializing and trying to start the submodule), whereafter
 		the green diode will light up if the submodule has started up. If an error has occurred the red diode will light up. 
 		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
-		\newpage
 		The web-interface. In the little comic book user interaction with the system is shown.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
@@ -294,7 +290,7 @@
 		When an actor has need for information the function of type \textit{Read} is activated. The function is displaying the relevant data of the model to the actor.\\\\
 		Finally, the \textit{Calculating} function is activated when an actor provides information, which should be included in a computation which also involves data from the model. The function returns its computed result to a display.\\\\
 		When all functions are found they must be defined by their type and complexity, as below.
-		\begin{table}[h!]
+		\begin{table}[H]
 			\begin{tabular}{| l | c | c |}
 				\hline
 	Title																& Complexity 	& Type				\\ \hline
@@ -339,7 +335,7 @@
 			\end{table}
 	\subsubsection{System Dynamics}
 			Diagram of how to put data on the web server.
-			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
 				\caption{Interaction between systems; Web browser and Hub both connected to the database}
@@ -348,7 +344,7 @@
 \subsection{General Architecture Design}
 	\subsubsection{Design Criteria}
 		Write in what parts should be used (mostly off the shelf things).
-				\begin{table}[h!]
+				\begin{table}[H]
 					\begin{tabular}{| r | c | c | c | c | c |}
 					\hline
 					Issue & Critical & Very Important & Important & Less Important & Notes \\ \hline
@@ -374,11 +370,10 @@
 			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
-	\newpage
 	\subsubsection{Architecture Dynamics}
 		Hubs communication with submodules
 		\textbf{Sequence Diagrams}
-		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+		\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
 				\caption{Sequence diagram; Communication between the system and external systems.}
