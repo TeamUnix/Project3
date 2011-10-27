@@ -1,7 +1,7 @@
 \newpage
-\section{Launch Phase}
-\subsection{General Analysis}
-	\subsubsection{Requirements	 Analysis}
+\chapter{Launch Phase}
+\section{General Analysis}
+	\subsection{Requirements	 Analysis}
 		Remember to define the max/min temp+humidity (ex. minimum temp 0deg)
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
@@ -71,9 +71,9 @@
 		\end{tabular}
 		\caption{Performance: How well does it have to be done...}
 		\end{table}
-	\subsubsection{Problem Domain Analysis}
+	\subsection{Problem Domain Analysis}
 
-			\paragraph{Block Diagram:}
+			\subsubsection{Block Diagram:}
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 				\begin{centering}
 					 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
@@ -81,7 +81,7 @@
 			 	\end{centering}
 			\end{figure}
 	\newpage
-			\paragraph{Block Diagram: Candidates in the system}
+			\subsubsection{Block Diagram: Candidates in the system}
 			\begin{itemize}
 				\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
 				\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
@@ -98,7 +98,7 @@
 				\item \textbf{Ethernet:} Unit that has connection to an internet database.
 
 			\end{itemize}
-			\paragraph{Block Diagram: Events in the system}
+			\subsubsection{Block Diagram: Events in the system}
 				\begin{itemize}
 					\item TemperatureBelowLimit
 					\item TemperatureAboveLimit
@@ -138,7 +138,7 @@
 					UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
 					\end{tabular}
 				\end{table}
-			\paragraph{State Machine Diagrams}
+			\subsubsection{State Machine Diagrams}
 				\textbf{ }\\
 				\textbf{Description of the different states: }
 				\\ After the initialization of all modules connected to the hub, the system is in  \textit{Run Mode}.
@@ -161,7 +161,7 @@
 			 	\end{centering}
 			\end{figure}
 	\newpage
-	\subsubsection{Usage Domain Analysis}
+	\subsection{Usage Domain Analysis}
 		\textbf{Web user - Log in}
 		\\\textit{Description: }
 		An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device
@@ -237,7 +237,7 @@
 					\end{tabular}
 					\caption{Example of \textit{hub} user interaction}
 				\end{table}	
-	\subsubsection{Interface Analysis}
+	\subsection{Interface Analysis}
 	The hardware interface as seen from the users perspective. Note, new modules is connected in the back of the hub.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
@@ -284,7 +284,7 @@
 		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
 		password e.g.
 	\newpage
-	\subsubsection{Function Analysis}
+	\subsection{Function Analysis}
 		From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.\\\\
 		When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.\\\\
 		Functions can be grouped into types. There are four different types of functions:\\\\
@@ -337,7 +337,7 @@
 				\caption{S = simple. M = medium. C = complex. VC = very complex}
 			\end{table}
 	\newpage
-	\subsubsection{System Dynamics}
+	\subsection{System Dynamics}
 			Diagram of how to put data on the web server.
 			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
@@ -345,8 +345,8 @@
 				\caption{Interaction between systems; Web browser and Hub both connected to the database}
 		 	\end{centering}
 		\end{figure}		
-\subsection{General Architecture Design}
-	\subsubsection{Design Criteria}
+\section{General Architecture Design}
+	\subsection{Design Criteria}
 		Write in what parts should be used (mostly off the shelf things).
 				\begin{table}[H]
 					\begin{tabular}{| r | c | c | c | c | c |}
@@ -375,7 +375,7 @@
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
 	\newpage
-	\subsubsection{Architecture Dynamics}
+	\subsection{Architecture Dynamics}
 		Hubs communication with submodules
 		\textbf{Sequence Diagrams}
 		\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
@@ -384,9 +384,9 @@
 				\caption{Sequence diagram; Communication between the system and external systems.}
 		 	\end{centering}
 		\end{figure}	
-\subsection{Technical Platform}
+\section{Technical Platform}
 
-	\subsubsection{Hardware Specifications}
+	\subsection{Hardware Specifications}
 	As hardware we are going to use the following things: 
 	\\Embedded Artists LPC2478-32 Developer kit.
 	\\Temperature sensor
@@ -394,7 +394,7 @@
 	\\Current sensor
 	\\Digital Converter
 	\\Power Line communication module
-	\subsubsection{Software Specifications}
+	\subsection{Software Specifications}
 	In the software part we are using the ARM processor, and we have to develop drivers for the different hardware above, we are also making the following in software:
 	\\Web server
 	\\Ethernet communication
