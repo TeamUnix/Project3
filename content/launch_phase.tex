@@ -2,6 +2,7 @@
 \section{Launch Phase}
 \subsection{General Analysis}
 	\subsubsection{Requirements	 Analysis}
+		Remember to define the max/min temp+humidity (ex. minimum temp 0deg)
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
 			\item Non-functional Requirements ("system shall be 'requirement' ")
@@ -33,7 +34,7 @@
 			NF-1.1 & Web Interface &  & User Friendly; Easy to understand so everyone without energy knowledge could use the system. \\ \hline
 			NF-1.2 & HW Interface &  & Simple; User Friendly; Only available for the user of the system. \\ \hline
 			NF-2 & Electrical &  &  \\ \hline
-			NF-2.1 & Voltage &  & The system work in a range 27.5V +-  10\%.\\ \hline
+			NF-2.1 & Voltage &  & The system work in a range 30V +-  10\%.\\ \hline
 			NF-2.2 & Current &  & Not defined yet... But very important \\ \hline
 		\end{tabular}
 		\caption{Non-Function: System shall be...}
@@ -45,9 +46,9 @@
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Reference} & \textbf{Description} \\\hline
 			B-1 & Status &  &  \\\hline
-			B-1.1 & Webpage &  & Warning will be posted in the webpage interface. \\\hline
-			B-1.2 & Physical &  & LEDs will show the current status of the connected device Running / Stand By / Warning. \\\hline
-			B-1.3 & Report &  & An email will be sent to the defined user when an error occurs. \\\hline
+			B-1.1 & Web Interface &  & Warning will be posted in the web interface. \\\hline
+			B-1.2 & Physical &  & LEDs will show the current status of the connected device Running / Initialise / Error. \\\hline
+			B-1.3 & Report &  & An e-mail will be sent to the defined user when an error occurs. \\\hline
 			B-2 & Energy Control &  &  \\\hline
 			B-2.1 & Over-production &  & Change devices status to stand by. \\\hline
 			B-2.2 & Under-production &  & Use of the energy store in the input/output module and power grid if it have to be a fast charging. \\\hline
@@ -76,6 +77,7 @@
 				\item \textbf{Consumers} Units that consumes power (e.g. light, washing machine, electric car)
 				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
 				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
+				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce enough energy to the consumers.
 				\item \textbf{Temperature:} Unit that measures the outdoor temperature. If the temperature is too high or low it might damage the hardware.
 				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
 			\end{itemize}
@@ -96,37 +98,37 @@
 				\end{itemize}
 				\textbf{Table with all the above candidates and event combined:}
 				\begin{table}[h!]
-					\begin{tabular}{| r | c | c | c | c | c |}
+					\begin{tabular}{| r | c | c | c | c | c | c |}
 					\hline
-					~ & Consumers & Producers & Storage & Temp & Humidity \\ \hline
-					TempBellowLimit & ~ & ~ & ~ & X & ~ \\ \hline
-					TempAboveLimit & ~ & ~ & ~ & X & ~ \\ \hline
-					HumidityAboveLimit & ~ & ~ & ~ & ~ & X \\ \hline
-					InitModule & X & X & X & ~ & ~ \\ \hline
-					StartModule & X & X & X & ~ & ~ \\ \hline
-					StopModule & X & X & X & ~ & ~ \\ \hline
-					StandbyModule & ~ & X & X & ~ & ~ \\ \hline
-					EnergyAboveLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					EnergyBelowLimit & ~ & X & ~ & ~ & ~ \\ \hline
-					CreateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
-					LoadModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
-					UpdateModuleLogFile & ~ & X & X & ~ & ~ \\ \hline
+					~ & Consumers & Producers & Storage & Grid &Temp & Humidity \\ \hline
+					TempBellowLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
+					TempAboveLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
+					HumidityAboveLimit & ~ & ~ & ~ & ~ & ~ & X \\ \hline
+					InitModule & X & X & X & ~ & ~ & ~ \\ \hline
+					StartModule & X & X & X & X & ~ & ~ \\ \hline
+					StopModule & X & X & X & ~ & ~ & ~ \\ \hline
+					StandbyModule & ~ & X & X & X & ~ & ~ \\ \hline
+					EnergyAboveLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
+					EnergyBelowLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
+					CreateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
+					LoadModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
+					UpdateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
 					\end{tabular}
 				\end{table}
 			\newpage
 			\paragraph{State Machine Diagrams}
-				\textbf{ }
+				\textbf{ }\\
 				\textbf{Description of the different states: }
-				\\ After the initialization of all peripherals connected to the hub, the system enters it enters \textit{Run Mode}.
+				\\ After the initialization of all modules connected to the hub, the system is in  \textit{Run Mode}.
 				The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits,
 				a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated ect. 
-				\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it can standby some of the energy-producing modules.
-				\\\textbf{Start: }Whenever a new module is connected it waits for the user to start up the module, either by using a start button on the hub or from the webpage.
-				\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web) to make sure all data is saved.
-				\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shuts down it's connected modules,
-							        tries to save all available data to the log. Then it sends an message (in form of mail) to the user with the problem where after the module
+				\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it will standby some of the energy-producing modules.
+				\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module, either by using a start button on the hub or from the web interface.
+				\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web interface) to make sure all data is saved.
+				\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules,
+							        tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module
 							        powers off itself. 
-				\\\textbf{Connect module: }At first the system checks if it has seen exactly that module before, if that is the case it updates variables from the database
+				\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database
 									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
 				\\\textbf{Warning: }Is sent if the system tries to send a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
 							    After the timeout state, the system returns to run state. The system might also try to restart the device after a while.
@@ -141,13 +143,13 @@
 	\subsubsection{Usage Domain Analysis}
 		\textbf{Web user - Log in}
 		\\\textit{Description: }
-		The log in user is any user with log in to the web interface for the system. This user can manage the energy hub from a browser on a computer.
+		An user with administrator privileges can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device.
 		\\\textbf{Web user - Visitors}
 		\\\textit{Description: }
 		This visitor of the web interface can only see info and data in the browser. This user is not able to manage anything.
 		\\\textbf{Hub}
 		\\\textit{Description: }
-		The Hub is the system. the system sometimes have to do something that is not possible for other users.
+		The Hub routes energy from producers to consumers or storage devices. It will keep the status of each module connected to it updated in is log file and web-interface.
 		\\\textbf{Engineer}
 		\\\textit{Description: }
 		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system.
@@ -229,6 +231,8 @@
 							The yellow diode also light up if the user stops the system.
 			\item \textbf{Red: }An error has occurred in the system.
 		\end{itemize}
+		If the hub is in the init state and the button is pushed, the green button will light up when the system has settles. If an error occurs the red one will light up.
+		When the hub is in Run mode and the button is pressed the hub powers down all the submodules where after it powers down it self.
 		\textbf{Submodules state}
 		\begin{itemize}
 			\item \textbf{Green: }Constant light, the module is in Run mode, no problems detected. Flashing light, the module is in standby mode, set by the hub
@@ -237,6 +241,9 @@
 							During initialization (a startup has been requested) the diode flashes.
 			\item \textbf{Red: }An error has occurred with the connected module.
 		\end{itemize}
+		When a submodule is in init mode and the button is pressed, the yellow diode starts flashing (indicating that the system is initializing and trying to start the submodule), whereafter
+		the green diode will light up if the submodule has started up. If an error has occurred the red diode will light up. 
+		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
 		\newpage
 		The web-interface. In the little comic book user interaction with the system is shown.
 		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
@@ -291,11 +298,10 @@
 			\end{table}
 	\subsubsection{System Dynamics}
 			Diagram of how to put data on the web server.
-			\\Small diagram of how to initialize, start, stop, pause submodules.
 			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
 			\begin{centering}
 				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
-				\caption{...}
+				\caption{Interaction between systems; Web browser and Hub both connected to the database}
 		 	\end{centering}
 		\end{figure}		
 \subsection{General Architecture Design}
@@ -327,18 +333,24 @@
 			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
-				
-	\subsubsection{Subsystem Design}
-		\begin{itemize}
-			\item Subsystem Architecture Diagram
-			\item Detailed Block Diagrams
-		\end{itemize}
+	\newpage
 	\subsubsection{Architecture Dynamics}
 		Hubs communication with submodules
-		\begin{itemize}
-			\item Sequence Diagrams
-		\end{itemize}
+		\textbf{Sequence Diagrams}
+		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{centering}
+				 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
+				\caption{Sequence diagram; Communication between the system and external systems.}
+		 	\end{centering}
+		\end{figure}	
 \subsection{Technical Platform}
-	A lot of technical stuffs. 
+
 	\subsubsection{Hardware Specifications}
+	Embedded Artists LPC2478-32 Developer kit.
+	\\Temperature sensor
+	\\Humidity sensor
+	\\Power Line communication module
 	\subsubsection{Software Specifications}
+	What software things should be implemented ?
+	\\
+
