@@ -82,18 +82,28 @@
 			
 			\paragraph{Block Diagram: Candidates in the system}
 			\begin{itemize}
+				\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
 				\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
 				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
-				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
-				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce enough energy to the consumers.
-				\item \textbf{Temperature:} Unit that measures the temperature where the system is placed. If the temperature is too high or low it might damage the hardware.
-				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
+				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) 
+				when needed (e.g. battery, air compressor). 
+				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce 
+				enough energy to the consumers.
+				\item \textbf{Current Sensor:} Unit that measures the current taken from the grid. To calculate the amount of green energy produced.
+				\item \textbf{Temperature:} Unit that measures the temperature where the system is placed. If the temperature is too high or 
+				low it might damage the hardware.
+				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the 
+				hardware might be damaged.
+				\item \textbf{Ethernet:} Unit that has connection to an internet database.
+
 			\end{itemize}
 			\paragraph{Block Diagram: Events in the system}
 				\begin{itemize}
 					\item TemperatureBelowLimit
 					\item TemperatureAboveLimit
 					\item HumidityAboveLimit
+					\item CurrentMaxLimit
+					\item CurrentMinLimit
 					\item EnergyAboveLimit
 					\item EnergyBelowLimit
 					\item InitModule
@@ -103,24 +113,28 @@
 					\item CreateModuleLogFile
 					\item LoadModuleLogFile
 					\item UpdateModuleLogFile
+					\item UpdateServer
 				\end{itemize}
 				\textbf{Table with all the above candidates and event combined:}
 				\begin{table}[h!]
-					\begin{tabular}{| r | c | c | c | c | c | c |}
+					\begin{tabular}{| r | c |c | c | c | c | c | c | c | c |}
 					\hline
-					~ & Consumers & Producers & Storage & Grid &Temp & Humidity \\ \hline
-					TempBellowLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
-					TempAboveLimit & ~ & ~ & ~ & ~ & X & ~ \\ \hline
-					HumidityAboveLimit & ~ & ~ & ~ & ~ & ~ & X \\ \hline
-					InitModule & X & X & X & ~ & ~ & ~ \\ \hline
-					StartModule & X & X & X & X & ~ & ~ \\ \hline
-					StopModule & X & X & X & ~ & ~ & ~ \\ \hline
-					StandbyModule & ~ & X & X & X & ~ & ~ \\ \hline
-					EnergyAboveLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
-					EnergyBelowLimit & ~ & X & ~ & X & ~ & ~ \\ \hline
-					CreateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
-					LoadModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
-					UpdateModuleLogFile & ~ & X & X & ~ & ~ & ~ \\ \hline
+					~ & 					P SW & Cons. & Prod. & Storage & Grid & Curr Sens & Temp & Humi & Ether. \\ \hline
+					TempBellowLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
+					TempAboveLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
+					HumidityAboveLimit	 	& ~          & ~         & ~         & ~           & ~           & ~               & ~      & X 	       & ~	\\ \hline
+					InitModule 			& ~          & X         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+					StartModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+					StopModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+					StandbyModule 		& ~          & ~         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+					CurrentMaxLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
+					CurrentMinLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
+					EnergyAboveLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+					EnergyBelowLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+					CreateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+					LoadModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+					UpdateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+					UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
 					\end{tabular}
 				\end{table}
 			\newpage
