@@ -2,7 +2,6 @@
 \chapter{Launch Phase}
 \section{General Analysis}
 	\subsection{Requirements	 Analysis}
-		Remember to define the max/min temp+humidity (ex. minimum temp 0deg)
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
 			\item Non-functional Requirements ("system shall be 'requirement' ")
@@ -15,11 +14,11 @@
 			\hline
 			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 			F-1 & Communication 	&  \\ \hline
-			F-1.1 & Web Server 		& The hub should be able to put data on a web-server. \\ \hline
-			F-1.2 & System 		& The hub should be able to communicate with a connected module through power line communication. \\ \hline
-			F-1.2.1 & Protocol 		& Not Defined yet... \\ \hline
+			F-1.1 & Web Server 		& The hub shall be able to put data on a web-server. \\ \hline
+			F-1.2 & System 		& The hub shall be able to communicate with a connected module through power line communication. \\ \hline
+			F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix)\\ \hline
 			F-2 & Routing 			&  \\ \hline
-			F-2.1 & Direction		& When a module is connected the system should automatically find out if it is an producer-, storage- or consumer module.\\ \hline
+			F-2.1 & Direction		& When a module is connected the system shall automatically find out if it is an producer-, storage- or consumer module.\\ \hline
 			F-2.2 & Storage 		& Energy stored is routed to the consumers. \\ \hline
 			F-2.3 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
 		\end{tabular}
@@ -390,7 +389,7 @@
 \section{Technical Platform}
 
 	\subsection{Hardware Specifications}
-	As hardware we are going to use the following things: 
+	As hardware we are going to use the following: 
 	\\Embedded Artists LPC2478-32 Developer kit.
 	\\Temperature sensor
 	\\Humidity sensor
