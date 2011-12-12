@@ -1,7 +1,6 @@
-\newpage
 \chapter{Launch Phase}
 \section{General Analysis}
-	\subsection{Requirements	 Analysis}
+	\subsection{Requirement Analysis}
 		\begin{itemize}
 			\item Functional Requirements ("system shall do 'requirement' ")
 			\item Non-functional Requirements ("system shall be 'requirement' ")
@@ -33,7 +32,7 @@
 			NF-1.1 & Web Interface 	& Easy to navigate. Maximum 2 click to go where you want on the webpage. \\ \hline
 			NF-1.2 & HW Interface 	& Simple; 3 diodes to show the status for each module and 1 button to change the status \\ \hline
 			NF-2 & Electrical 		&  \\ \hline
-			NF-2.1 & Voltage 		& The input and output ports should work in a range 30V +/-  10\%.\\ \hline
+			NF-2.1 & Voltage 		& The input and output ports must work in the range 30V +/-  10\%.\\ \hline
 			NF-2.2 & Current 		& The maximum current on each port is defined to maximum 100 Amperes. \\ \hline
 		\end{tabular}
 		\caption{Non-Function: System shall be...}
@@ -73,13 +72,13 @@
 	\subsection{Problem Domain Analysis}
 
 			\subsubsection{Block Diagram:}
-			\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]
 				\begin{centering}
 					 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
 		 			\caption{Block diagram}
 			 	\end{centering}
 			\end{figure}
-	\newpage
+
 			\subsubsection{Block Diagram: Candidates in the system}
 			\begin{itemize}
 				\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
@@ -154,13 +153,13 @@
 									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
 				\\\textbf{Warning: }Is sent if the system tries to set a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
 							    After the timeout state, the system returns to run state.
-			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]
 				\begin{centering}
 					 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
 		 			\caption{Web user interface}
 			 	\end{centering}
 			\end{figure}
-	\newpage
+			
 	\subsection{Usage Domain Analysis}
 		\textbf{Web user - Log in}
 		\\\textit{Description: }
@@ -217,7 +216,7 @@
 		\\\textbf{Disconnect module}
 		\\\textit{Description: }
 		Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
-		\\\begin{table}[h!]
+		\begin{table}[H]
 					\begin{tabular}{| r | c | c |}
 					\hline
 					Number	& On system user	& System \\ \hline
@@ -228,7 +227,7 @@
 					\end{tabular}
 					\caption{Example of \textit{on system user} interaction}
 				\end{table}
-		\\\begin{table}[h!]
+		\begin{table}[H]
 					\begin{tabular}{| r | c | c |}
 					\hline
 					Number	& Hub				& System \\ \hline
@@ -239,7 +238,7 @@
 				\end{table}	
 	\subsection{Interface Analysis}
 	\textbf{Physical interface: } The hardware interface as seen from the users perspective. Note, new modules is connected on the back of the hub.
-		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+		\begin{figure}[H]
 			\begin{centering}
 				 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
 				\caption{User interacting with the physical hub module}
@@ -268,24 +267,24 @@
 		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
 		The web-interface. In the little comic book user interaction with the system is shown.
 		\\ \\\textbf{WebInterface: }
-		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+		\begin{figure}[H]
 			\begin{centering}
 				 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
 				\caption{Web interface; user interaction with the web interface}
 		 	\end{centering}
 		\end{figure}
 
-		\begin{figure}[h!]		%Remember to put the h!, to not fuck the sections.
+		\begin{figure}[H]
 			\begin{centering}
 				 \includegraphics[width=0.68\textwidth]{images/web_interface2.jpg}
 				\caption{Web interface; user interaction with the web interface}
 		 	\end{centering}
 		\end{figure}			
-		\newpage
+
 		The energy systems webpage is open for everyone. Everyone can go to the webpage and see the status of the system and all of its sub-devices.
 		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
 		password e.g.
-	\newpage
+
 	\subsection{Function Analysis}
 		From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.\\\\
 		When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.\\\\
@@ -338,10 +337,10 @@
 				\end{tabular}
 				\caption{S = simple. M = medium. C = complex. VC = very complex}
 			\end{table}
-	\newpage
+
 	\subsection{System Dynamics}
 			Diagram of how to put data on the web server.
-			\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
+			\begin{figure}[H]
 			\begin{centering}
 				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
 				\caption{Interaction between systems; Web browser and Hub both connected to the database}
@@ -376,11 +375,10 @@
 			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
 			\end{enumerate}
-	\newpage
 	\subsection{Architecture Dynamics}
 		Hubs communication with submodules
 		\textbf{Sequence Diagrams}
-		\begin{figure}[H]		%Remember to put the h!, to not fuck the sections.
+		\begin{figure}[H]
 			\begin{centering}
 				 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
 				\caption{Sequence diagram; Communication between the system and external systems.}
@@ -403,7 +401,7 @@
 	\\Storage module driver
 	\\Producer module driver
 	\\Consumer module driver
-	\begin{table}[h!]
+	\begin{table}[H]
 			\begin{tabular}{| l | c | c | c |}
 				\hline
 	Class							& Interface	& HW	& SW	\\ \hline
