@@ -10,9 +10,12 @@
 \usepackage{lastpage}
 \usepackage{multirow}
 \usepackage{float}
+\usepackage{wrapfig}
+\usepackage{subfig}
+\usepackage{titlesec}
 
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
 
 
 \oddsidemargin  -0.5cm
@@ -32,3 +35,9 @@
 \rfoot{\today}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
