@@ -1,302 +1,278 @@
 \chapter{Launch Phase}
+An initial analysis of the final system is made in order to estimate the development time it takes to develop the system. When knowing the development time of a product, this can be translated into an estimation of the total development cost. In the launch phase, everything not concerning the realization phase of the system have to be considered, in order to make a good time estimation. The black box which it will all end up with have been defined in the Pre-Project, now one layer is pilled of the box at a time, which is done in the next 3 sections. Before digging in to the realization phase a detailed development plan for the product is then defined. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Analysis}
-	\subsection{Requirement Analysis}
-		\begin{itemize}
-			\item Functional Requirements ("system shall do 'requirement' ")
-			\item Non-functional Requirements ("system shall be 'requirement' ")
-			\item Behavioural Requirements ("how the system shall react")
-			\item Performance Requirements ("how well does it have to be done")
-		\end{itemize}
-		% Functional Table
-		\begin{table}[H]
-		\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
-			\hline
-			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
-			F-1 & Communication 	&  \\ \hline
-			F-1.1 & Web Server 		& The hub shall be able to put data on a web-server. \\ \hline
-			F-1.2 & System 		& The hub shall be able to communicate with a connected module through power line communication. \\ \hline
-			F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix)\\ \hline
-			F-2 & Routing 			&  \\ \hline
-			F-2.1 & Direction		& When a module is connected the system shall automatically find out if it is an producer-, storage- or consumer module.\\ \hline
-			F-2.2 & Storage 		& Energy stored is routed to the consumers. \\ \hline
-			F-2.3 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
-		\end{tabular}
-		\caption{Functional: System shall do...}
-		\end{table}
-		% Non-Function Table
-		\begin{table}[H]
-			\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
-			\hline
-			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
-			NF-1 & User Interface 	&  \\ \hline
-			NF-1.1 & Web Interface 	& Easy to navigate. Maximum 2 click to go where you want on the webpage. \\ \hline
-			NF-1.2 & HW Interface 	& Simple; 3 diodes to show the status for each module and 1 button to change the status \\ \hline
-			NF-2 & Electrical 		&  \\ \hline
-			NF-2.1 & Voltage 		& The input and output ports must work in the range 30V +/-  10\%.\\ \hline
-			NF-2.2 & Current 		& The maximum current on each port is defined to maximum 100 Amperes. \\ \hline
-		\end{tabular}
-		\caption{Non-Function: System shall be...}
-		\end{table}
+In the general analysis section the requirement is found and tests to check if these requirements have been fulfilled created.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Requirement Analysis}
+\begin{itemize}
+	\item Functional Requirements ("system shall do 'requirement' ")
+	\item Non-functional Requirements ("system shall be 'requirement' ")
+	\item Behavioural Requirements ("how the system shall react")
+	\item Performance Requirements ("how well does it have to be done")
+\end{itemize}
+% Functional Table
+\begin{table}[H]
+	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\hline
+	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+		F-1 & Communication 	&  \\ \hline
+		F-1.1 & Web Server 		& The hub shall be able to put data on a web-server. \\ \hline
+		F-1.2 & System 		& The hub shall be able to communicate with a connected module through power line communication. \\ \hline
+		F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix)\\ \hline
+		F-2 & Routing 			&  \\ \hline
+		F-2.1 & Direction		& When a module is connected the system shall automatically find out if it is an producer-, storage- or consumer module.\\ \hline
+		F-2.2 & Storage 		& Energy stored is routed to the consumers. \\ \hline
+		F-2.3 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
+	\end{tabular}
+	\caption{Functional: System shall do...}
+\end{table}
+% Non-Function Table
+\begin{table}[H]
+	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\hline
+	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+		NF-1 & User Interface 	&  \\ \hline
+		NF-1.1 & Web Interface 	& Easy to navigate. Maximum 2 click to go where you want on the webpage. \\ \hline
+		NF-1.2 & HW Interface 	& Simple; 3 diodes to show the status for each module and 1 button to change the status \\ \hline
+		NF-2 & Electrical 		&  \\ \hline
+		NF-2.1 & Voltage 		& The input and output ports must work in the range 30V +/-  10\%.\\ \hline
+		NF-2.2 & Current 		& The maximum current on each port is defined to maximum 100 Amperes. \\ \hline
+	\end{tabular}
+	\caption{Non-Function: System shall be...}
+\end{table}
+% Behavioural Table
+\begin{table}[H]
+	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\hline
+	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+		B-1 & Status &  \\\hline
+		B-1.1 & Web Interface 	 & Warnings will be posted in the web interface. \\\hline
+		B-1.2 & Physical 		 & LEDs will show if a device is stopped or running\\\hline
+		B-1.3 & Report 			 & An e-mail will be sent to the defined user if an error occurs. \\\hline
+		B-2 & Energy Control 	 &  \\\hline
+		B-2.1 & Over-production 	 & Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
+		B-2.2 & Under-production  & If the producing modules does not produce enough energy, energy is taken from the storage modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
+		B-3 & Critical Error 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
+		B-3.1 & Humidity 		 & When the humidity is above the maximum level 70\%, stop the system. \\\hline
+		B-3.2 & Temperature High& When the temperature is higher than 65 degreese,  stop the system.\\\hline
+		B-3.2 & Temperature Low & When the temperature is below 0 degreese, stop the system\\\hline
+	\end{tabular}
+	\caption{Behavioural: How the system shall react...}
+\end{table}
+% Perfomance Table
+	\begin{table}[H]
+	\begin{tabular} [b] {| c | p{3cm} | p{10cm} |}
+	\hline
+		\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+		P-1 & Hardware 		&  \\ \hline
+		P-1.1 & Housing 		& The housing have to be water-proof, to not harm the system.\\ \hline
+	\end{tabular}
+	\caption{Performance: How well does it have to be done...}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Requirement tests}
 
-		% Behavioural Table
-		\begin{table}[H]
-			\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
-			\hline
-			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
-			B-1 & Status &  \\\hline
-			B-1.1 & Web Interface 	 & Warnings will be posted in the web interface. \\\hline
-			B-1.2 & Physical 		 & LEDs will show if a device is stopped or running\\\hline
-			B-1.3 & Report 			 & An e-mail will be sent to the defined user if an error occurs. \\\hline
-			B-2 & Energy Control 	 &  \\\hline
-			B-2.1 & Over-production 	 & Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
-			B-2.2 & Under-production  & If the producing modules does not produce enough energy, energy is taken from the storage
-				      modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
-			B-3 & Critical Error 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
-			B-3.1 & Humidity 		 & When the humidity is above the maximum level 70\%, stop the system. \\\hline
-			B-3.2 & Temperature High& When the temperature is higher than 65 degreese,  stop the system.\\\hline
-			B-3.2 & Temperature Low & When the temperature is below 0 degreese, stop the system\\\hline
-		\end{tabular}
-		\caption{Behavioural: How the system shall react...}
-		\end{table}
-		
-		% Perfomance Table
-		\begin{table}[H]
-			\begin{tabular} [b] {| c | p{3cm} | p{10cm} |}
-			\hline
-			\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
-			P-1 & Hardware 		&  \\ \hline
-			P-1.1 & Housing 		& The housing have to be water-proof, to not harm the system.\\ \hline
-		\end{tabular}
-		\caption{Performance: How well does it have to be done...}
-		\end{table}
-	\subsection{Problem Domain Analysis}
 
-			\subsubsection{Block Diagram:}
-			\begin{figure}[H]
-				\begin{centering}
-					 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
-		 			\caption{Block diagram}
-			 	\end{centering}
-			\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Problem Domain Analysis}
 
-			\subsubsection{Block Diagram: Candidates in the system}
-			\begin{itemize}
-				\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
-				\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
-				\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
-				\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) 
-				when needed (e.g. battery, air compressor). 
-				\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce 
-				enough energy to the consumers.
-				\item \textbf{Current Sensor:} Unit that measures the current taken from the grid. To calculate the amount of green energy produced.
-				\item \textbf{Temperature:} Unit that measures the temperature where the system is placed. If the temperature is too high or 
-				low it might damage the hardware.
-				\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the 
-				hardware might be damaged.
-				\item \textbf{Ethernet:} Unit that has connection to an internet database.
+\subsubsection{Block Diagram: Candidates in the system}
+\begin{itemize}
+	\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
+	\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
+	\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
+	\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
+	\item \textbf{Grid:} The grid is used to start up the whole system. It is also used if producing modules does not produce enough energy to the consumers.
+	\item \textbf{Current Sensor:} Unit that measures the current taken from the grid. To calculate the amount of green energy produced.
+	\item \textbf{Temperature:} Unit that measures the temperature where the system is placed. If the temperature is too high or low it might damage the hardware.
+	\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
+	\item \textbf{Ethernet:} Unit that has connection to an internet database.
+\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Block Diagram:}
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.9\textwidth]{images/block_diagram.png}
+			\caption{Block diagram}
+	 	\end{centering}
+	\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Block Diagram: Events in the system}
+	\begin{itemize}
+		\item TemperatureBelowLimit
+		\item TemperatureAboveLimit
+		\item HumidityAboveLimit
+		\item CurrentMaxLimit
+		\item CurrentMinLimit
+		\item EnergyAboveLimit
+		\item EnergyBelowLimit
+		\item InitModule
+		\item StartModule
+		\item StopModule
+		\item StandbyModule
+		\item CreateModuleLogFile
+		\item LoadModuleLogFile
+		\item UpdateModuleLogFile
+		\item UpdateServer
+	\end{itemize}
+\textbf{Table with all the above candidates and event combined:}
+	\begin{table}[H]
+	\begin{tabular}{| r | c |c | c | c | c | c | c | c | c |}
+	\hline
+		~ & 					P SW & Cons. & Prod. & Storage & Grid & Curr Sens & Temp & Humi & Ether. \\ \hline
+		TempBellowLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
+		TempAboveLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
+		HumidityAboveLimit	 	& ~          & ~         & ~         & ~           & ~           & ~               & ~      & X 	       & ~	\\ \hline
+		InitModule 			& ~          & X         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+		StartModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+		StopModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+		StandbyModule 		& ~          & ~         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+		CurrentMaxLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
+		CurrentMinLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
+		EnergyAboveLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+		EnergyBelowLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+		CreateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+		LoadModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+		UpdateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
+		UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
+	\end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{State Machine Diagram}\textbf{ }\\
+	\textbf{Description of the different states: }
+	\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
+	\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
+	\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits, a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
+	\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it will standby some of the energy-producing modules.
+	\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module, either by using a start button on the hub or from the web interface.
+	\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web interface) to make sure all data is saved.
+	\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules, tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module powers off itself. 
+	\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database (uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
+	\\\textbf{Warning: }Is sent if the system tries to set a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). After the timeout state, the system returns to run state.
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
+		\caption{State Machine Diagram}
+	 	\end{centering}
+	\end{figure}
 
-			\end{itemize}
-			\subsubsection{Block Diagram: Events in the system}
-				\begin{itemize}
-					\item TemperatureBelowLimit
-					\item TemperatureAboveLimit
-					\item HumidityAboveLimit
-					\item CurrentMaxLimit
-					\item CurrentMinLimit
-					\item EnergyAboveLimit
-					\item EnergyBelowLimit
-					\item InitModule
-					\item StartModule
-					\item StopModule
-					\item StandbyModule
-					\item CreateModuleLogFile
-					\item LoadModuleLogFile
-					\item UpdateModuleLogFile
-					\item UpdateServer
-				\end{itemize}
-				\textbf{Table with all the above candidates and event combined:}
-				\begin{table}[H]
-					\begin{tabular}{| r | c |c | c | c | c | c | c | c | c |}
-					\hline
-					~ & 					P SW & Cons. & Prod. & Storage & Grid & Curr Sens & Temp & Humi & Ether. \\ \hline
-					TempBellowLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
-					TempAboveLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
-					HumidityAboveLimit	 	& ~          & ~         & ~         & ~           & ~           & ~               & ~      & X 	       & ~	\\ \hline
-					InitModule 			& ~          & X         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-					StartModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
-					StopModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
-					StandbyModule 		& ~          & ~         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-					CurrentMaxLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
-					CurrentMinLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
-					EnergyAboveLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
-					EnergyBelowLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
-					CreateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-					LoadModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-					UpdateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-					UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
-					\end{tabular}
-				\end{table}
-			\subsubsection{State Machine Diagram}
-				\textbf{ }\\
-				\textbf{Description of the different states: }
-				\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
-				\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
-				\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits,
-				a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
-				\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it will standby some of the energy-producing modules.
-				\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module, either by using a start button on the hub or from the web interface.
-				\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web interface) to make sure all data is saved.
-				\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules,
-							        tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module
-							        powers off itself. 
-				\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database
-									(uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
-				\\\textbf{Warning: }Is sent if the system tries to set a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). 
-							    After the timeout state, the system returns to run state.
-			\begin{figure}[H]
-				\begin{centering}
-					 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
-		 			\caption{State Machine Diagram}
-			 	\end{centering}
-			\end{figure}
-			
-	\subsection{Usage Domain Analysis}
-		\textbf{Web user - Log in}
-		\\\textit{Description: }
-		An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device
-		 via the web page and have permission to start and stop modules.
-		\\\textbf{Web user - Visitors}
-		\\\textit{Description: }
-		This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
-		\\\textbf{Hub}
-		\\\textit{Description: }
-		The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
-		\\\textbf{Engineer}
-		\\\textit{Description: }
-		The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system and have permission to everything.
-		\\\textbf{On system user}
-		\\\textit{Description: }
-		On system user is any user that go to the physical system and operates on it. This user is able to start and stop the connected modules to the hub.
-		\\\\\textbf{Plug in module}
-		\\\textit{Description: }
-		The user should be able to plug in different modules to the system, this is only possible when you stand physical at the system, so this use case is only included for the \textit{On system user}.
-		\\\textbf{Unplug module}
-		\\\textit{Description: }
-		Like plugging in modules this use case is only included for the \textit{On system user}.
-		\\\textbf{Start/Stop module}
-		\\\textit{Description: }
-		The capability of turning modules on and off is included in the \textit{On system user}, \textit{Engineer}, \textit{Hub} and the \textit{Web user - Log in}.
-		\\\textbf{Start/Stop system}
-		\\\textit{Description: }
-		The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
-		\\\textbf{View Production/Consumption of module}
-		\\\textit{Description: }
-		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{View temperature}
-		\\\textit{Description: }
-		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{View log of module}
-		\\\textit{Description: }
-		It is possible for the \textit{Web user - Log in}, \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{View humidity}
-		\\\textit{Description: }
-		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{Initialize module}
-		\\\textit{Description: }
-		It is only possible for the \textit{Hub} to initialize modules.
-		\\\textbf{Standby a module}
-		\\\textit{Description: }
-		Setting modules in standby mode is only possible for the \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{View energy level of storage modules}
-		\\\textit{Description: }
-		It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-		\\\textbf{Create log file}
-		\\\textit{Description: }
-		Creating a log file for a module is only possible for the \textit{Hub}.
-		\\\textbf{Disconnect module}
-		\\\textit{Description: }
-		Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
-		\begin{table}[H]
-					\begin{tabular}{| r | c | c |}
-					\hline
-					Number	& On system user	& System \\ \hline
-					1		& Plug in module	& ~ \\ \hline
-					2		& ~					& Initialize module \\ \hline
-					3		& Start module		& ~ \\ \hline
-					4		& ~					& Turning on the module \\ \hline
-					\end{tabular}
-					\caption{Example of \textit{on system user} interaction}
-				\end{table}
-		\begin{table}[H]
-					\begin{tabular}{| r | c | c |}
-					\hline
-					Number	& Hub				& System \\ \hline
-					1		& Check the power production (it is to low)	& ~ \\ \hline
-					2		& ~											& Setting the module to standby \\ \hline
-					\end{tabular}
-					\caption{Example of \textit{hub} user interaction}
-				\end{table}	
-	\subsection{Interface Analysis}
-	\textbf{Physical interface: } The hardware interface as seen from the users perspective. Note, new modules is connected on the back of the hub.
-		\begin{figure}[H]
-			\begin{centering}
-				 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
-				\caption{User interacting with the physical hub module}
-		 	\end{centering}
-		\end{figure}
-		\textbf{ } \\ 
-		\textbf{The Hub diode states}
-		\begin{itemize}
-			\item \textbf{Green: }The modules is in Run mode, no problems detected.
-			\item \textbf{Yellow: }The module is powered on, but the user has not requested a startup of the module.
-							The yellow diode also light up if the user stops the system.
-			\item \textbf{Red: }An error has occurred in the system.
-		\end{itemize}
-		If the hub is in the init state and the button is pushed, the green button will light up when the system has settles. If an error occurs the red one will light up.
-		When the hub is in Run mode and the button is pressed the hub powers down all the submodules where after it powers down it self.
-		\textbf{Submodules state}
-		\begin{itemize}
-			\item \textbf{Green: }Constant light, the module is in Run mode, no problems detected. Flashing light, the module is in standby mode, set by the hub
-							due to over-/underproduction or other.
-			\item \textbf{Yellow: }Constant light, the module is plugged to the hub, but the user has not requested a startup yet or the module has been stopped.
-							During initialization (a startup has been requested) the diode flashes.
-			\item \textbf{Red: }An error has occurred with the connected module.
-		\end{itemize}
-		When a submodule is in init mode and the button is pressed, the yellow diode starts flashing (indicating that the system is initializing and trying to start the submodule), whereafter
-		the green diode will light up if the submodule has started up. If an error has occurred the red diode will light up. 
-		When the submodule is in Run mode and the button is pressed it will power off the module and only light up the yellow diode (indicating initial state).
-		The web-interface. In the little comic book user interaction with the system is shown.
-		\\ \\\textbf{WebInterface: }
-		\begin{figure}[H]
-			\begin{centering}
-				 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
-				\caption{Web interface; user interaction with the web interface}
-		 	\end{centering}
-		\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Usage Domain Analysis}
+	\textbf{Web user - Log in}
+	\\\textit{Description: }
+	An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to start and stop modules.
+	\\\textbf{Web user - Visitors}
+	\\\textit{Description: }
+	This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
+	\\\textbf{Hub}
+	\\\textit{Description: }
+	The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
+	\\\textbf{Engineer}
+	\\\textit{Description: }
+	The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system and have permission to everything.
+	\\\textbf{On system user}
+	\\\textit{Description: }
+	On system user is any user that go to the physical system and operates on it. This user is able to start and stop the connected modules to the hub.
+	\\\\\textbf{Plug in module}
+	\\\textit{Description: }
+	The user should be able to plug in different modules to the system, this is only possible when you stand physical at the system, so this use case is only included for the	\textit{On system user}.
+	\\\textbf{Unplug module}
+	\\\textit{Description: }
+	Like plugging in modules this use case is only included for the \textit{On system user}.
+	\\\textbf{Start/Stop module}
+	\\\textit{Description: }
+	The capability of turning modules on and off is included in the \textit{On system user}, \textit{Engineer}, \textit{Hub} and the \textit{Web user - Log in}.
+	\\\textbf{Start/Stop system}
+	\\\textit{Description: }
+	The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
+	\\\textbf{View Production/Consumption of module}
+	\\\textit{Description: }
+	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{View temperature}
+	\\\textit{Description: }
+	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{View log of module}
+	\\\textit{Description: }
+	It is possible for the \textit{Web user - Log in}, \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{View humidity}
+	\\\textit{Description: }
+	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{Initialize module}
+	\\\textit{Description: }
+	It is only possible for the \textit{Hub} to initialize modules.
+	\\\textbf{Standby a module}
+	\\\textit{Description: }
+	Setting modules in standby mode is only possible for the \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{View energy level of storage modules}
+	\\\textit{Description: }
+	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+	\\\textbf{Create log file}
+	\\\textit{Description: }
+	Creating a log file for a module is only possible for the \textit{Hub}.
+	\\\textbf{Disconnect module}
+	\\\textit{Description: }
+	Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
+	
+\begin{table}[H]
+	\begin{tabular}{| r | c | c |}
+	\hline
+		Number	& On system user	& System \\ \hline
+		1		& Plug in module	& ~ \\ \hline
+		2		& ~					& Initialize module \\ \hline
+		3		& Start module		& ~ \\ \hline
+		4		& ~					& Turning on the module \\ \hline
+	\end{tabular}
+	\caption{Example of \textit{on system user} interaction}
+\end{table}
 
-		\begin{figure}[H]
-			\begin{centering}
-				 \includegraphics[width=0.68\textwidth]{images/web_interface2.jpg}
-				\caption{Web interface; user interaction with the web interface}
-		 	\end{centering}
-		\end{figure}			
+\begin{table}[H]
+	\begin{tabular}{| r | c | c |}
+	\hline
+		Number	& Hub				& System \\ \hline
+		1		& Check the power production (it is to low)	& ~ \\ \hline
+		2		& ~											& Setting the module to standby \\ \hline
+	\end{tabular}
+	\caption{Example of \textit{hub} user interaction}
+\end{table}	
 
-		The energy systems webpage is open for everyone. Everyone can go to the webpage and see the status of the system and all of its sub-devices.
-		When the user logs onto the system he gets access to start and stop devices, read the log files, change settings such as, warning mail address,
-		password e.g.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Interface Analysis}
+\textbf{Physical interface: } The hardware interface as seen from the users perspective. Note, new modules is connected on the back of the hub.
 
-	\subsection{Function Analysis}
-		From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.\\\\
-		When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.\\\\
-		Functions can be grouped into types. There are four different types of functions:\\\\
-		\textit{Update} is a type defining functions which are activated by a problem or application domain event, and which results in a change in the model's state.\\\\
-		The type \textit{Signal} defines a function which is triggered by a change in the model's state. Running the function always results in a reaction to its surroundings: that is either the reaction is a display to the actors in the problem domain or else the reacting a direct intervention in the problem domain.\\\\
-		When an actor has need for information the function of type \textit{Read} is activated. The function is displaying the relevant data of the model to the actor.\\\\
-		Finally, the \textit{Calculating} function is activated when an actor provides information, which should be included in a computation which also involves data from the model. The function returns its computed result to a display.\\\\
-		When all functions are found they must be defined by their type and complexity, as below.
-		\begin{table}[H]
-			\begin{tabular}{| l | c | c |}
-				\hline
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
+		\caption{User interacting with the physical hub module}
+	\end{centering}
+\end{figure}
+\textbf{\huge SHORT RESUME OF THE IDE REPORT}
+\\\textbf{WebInterface: }
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
+		\caption{Web interface; user interaction with the web interface}
+ 	\end{centering}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Function Analysis}
+From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.
+\\\\ When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.
+\\\\ Functions can be grouped into types. There are four different types of functions:
+\\\\ \textit{Update} is a type defining functions which are activated by a problem or application domain event, and which results in a change in the model's state.
+\\\\ The type \textit{Signal} defines a function which is triggered by a change in the model's state. Running the function always results in a reaction to its surroundings: that is either the reaction is a display to the actors in the problem domain or else the reacting a direct intervention in the problem domain.
+\\\\ When an actor has need for information the function of type \textit{Read} is activated. The function is displaying the relevant data of the model to the actor.
+\\\\ Finally, the \textit{Calculating} function is activated when an actor provides information, which should be included in a computation which also involves data from the model. The function returns its computed result to a display.
+\\\\ When all functions are found they must be defined by their type and complexity, as below.
+
+\begin{table}[H]
+	\begin{tabular}{| l | c | c |}
+	\hline
 	Title																& Complexity 	& Type				\\ \hline
 	Connect new module	&&
 	\\A user should be able to connect a new module							& S				& Update 			\\ \hline
@@ -334,99 +310,114 @@
 	\\The system should be able to stop modules								& M				& Update	 		\\ \hline
 	Start module	&&
 	\\The system should be able to start modules								& M				& Update		 	\\ \hline
-				\end{tabular}
-				\caption{S = simple. M = medium. C = complex. VC = very complex}
-			\end{table}
+	\end{tabular}
+	\caption{S = simple. M = medium. C = complex. VC = very complex}
+\end{table}
 
-	\subsection{System Dynamics}
-			Diagram of how to put data on the web server.
-			\begin{figure}[H]
-			\begin{centering}
-				 \includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
-				\caption{Interaction between systems; Web browser and Hub both connected to the database}
-		 	\end{centering}
-		\end{figure}		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{System Dynamics}
+Diagram of how to put data on the web server.
+\begin{figure}[H]
+	\begin{centering}
+		\includegraphics[width=0.7\textwidth]{images/communication_diagram.png}
+		\caption{Interaction between systems; Web browser and Hub both connected to the database}
+ 	\end{centering}
+\end{figure}		
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Architecture Design}
-	\subsection{Design Criteria}
-		Write in what parts should be used (mostly off the shelf things).
-				\begin{table}[H]
-					\begin{tabular}{| r | c | c | c | c | c |}
-					\hline
-					Issue & Critical & Very Important & Important & Less Important & Notes \\ \hline
-					Safe					& X & ~ & ~ & ~ & 1 \\ \hline
-					Performance 			& ~ & ~ & X & ~ & 2 \\ \hline
-					Usage 				& X & ~ & ~ & ~ & 3 \\ \hline
-					Reliability 			& X & ~ & ~ & ~ & 4 \\ \hline
-					Easy serviceable 		& ~ & X & ~ & ~ & 5 \\ \hline
-					Remote maintenance 	& ~ & ~ & X & ~ & 6 \\ \hline
-					Cost effective 			& ~ & ~ & ~ & X & 7 \\ \hline
-					\end{tabular}
-				\end{table}
-			Notes:
-			\begin{enumerate}
-			\item The safety is a very important factor, as the system is meant as a showoff system for high-school students, who should
-			be able to be near the system without hurting themselves or the system.
-			\item The performance in the system is not critical when considering it from the users perspective. It doesn't matter if it takes a few seconds before the system responds the user.
-			But the system should still be able to react fast in order not to harm it self, but also to get a high effectiveness. 
-			\item The system should be easy to use. All kinds of people should be able to use the system without any specific training.
-			Connecting of new devices and doing administrative jobs on the system a small walk through of the system is required. 
-			\item Errors must not occur in the system. The hub is the central nerve in the whole system, therefore if the hub does not run, non of the subsystems does and no energy is routed.
-			\item The user of the system should be able to find eventual errors on the system by him self, with help from a good error log created by the system.
-			\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
-			\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
-			\end{enumerate}
-	\subsection{Architecture Dynamics}
-		Hubs communication with submodules
-		\textbf{Sequence Diagrams}
-		\begin{figure}[H]
-			\begin{centering}
-				 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
-				\caption{Sequence diagram; Communication between the system and external systems.}
-		 	\end{centering}
-		\end{figure}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Design Criteria}
+Write in what parts should be used (mostly off the shelf things).
+\begin{table}[H]
+	\begin{tabular}{| r | c | c | c | c | c |}
+	\hline
+		Issue & Critical & Very Important & Important & Less Important & Notes \\ \hline
+		Safe					& X & ~ & ~ & ~ & 1 \\ \hline
+		Performance 			& ~ & ~ & X & ~ & 2 \\ \hline
+		Usage 				& X & ~ & ~ & ~ & 3 \\ \hline
+		Reliability 			& X & ~ & ~ & ~ & 4 \\ \hline
+		Easy serviceable 		& ~ & X & ~ & ~ & 5 \\ \hline
+		Remote maintenance 	& ~ & ~ & X & ~ & 6 \\ \hline
+		Cost effective 			& ~ & ~ & ~ & X & 7 \\ \hline
+	\end{tabular}
+	\end{table}
+Notes:
+\begin{enumerate}
+	\item The safety is a very important factor, as the system is meant as a showoff system for high-school students, who should be able to be near the system without hurting themselves or the system.
+	\item The performance in the system is not critical when considering it from the users perspective. It doesn't matter if it takes a few seconds before the system responds the user. But the system should still be able to react fast in order not to harm it self, but also to get a high effectiveness. 
+	\item The system should be easy to use. All kinds of people should be able to use the system without any specific training. Connecting of new devices and doing administrative jobs on the system a small walk through of the system is required. 
+	\item Errors must not occur in the system. The hub is the central nerve in the whole system, therefore if the hub does not run, non of the subsystems does and no energy is routed.
+	\item The user of the system should be able to find eventual errors on the system by him self, with help from a good error log created by the system.
+	\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
+	\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Architecture Dynamics}
+Hubs communication with submodules
+\textbf{Sequence Diagrams}
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/SequenceDiagram.png}
+		\caption{Sequence diagram; Communication between the system and external systems.}
+ 	\end{centering}
+\end{figure}	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Technical Platform}
 
-	\subsection{Hardware Specifications}
-	As hardware we are going to use the following: 
-	\\Embedded Artists LPC2478-32 Developer kit.
-	\\Temperature sensor
-	\\Humidity sensor
-	\\Current sensor
-	\\Digital Converter
-	\\Power Line communication module
-	\subsection{Software Specifications}
-	In the software part we are using the ARM processor, and we have to develop drivers for the different hardware above, we are also making the following in software:
-	\\Web server
-	\\Ethernet communication
-	\\Storage module driver
-	\\Producer module driver
-	\\Consumer module driver
-	\begin{table}[H]
-			\begin{tabular}{| l | c | c | c |}
-				\hline
-	Class							& Interface	& HW	& SW	\\ \hline
-	\textbf{System:}				&&&							\\ \hline
-	ARM								& DIG		&		& X 	\\ \hline
-	PLC module						& DIG/ANA	& X		& X 	\\ \hline
-	Power switch					& DIG/ANA	& X		& X 	\\ \hline
-	Digital Converter				& DIG/ANA	& X		& X 	\\ \hline
-	Current sensor					& DIG/ANA	& X		& X 	\\ \hline
-	\textbf{Sensor:}				&&&							\\ \hline
-	Temperature						& ANA		& X		& 	 	\\ \hline
-	Humidity						& ANA		& X		& 		\\ \hline
-	\textbf{Web interface:}			&&&							\\ \hline
-	Ethernet						& DIG		& 		& X	 	\\ \hline
-	Web server						& DIG		& 		& X		\\ \hline
-	\textbf{Other:}					&&&							\\ \hline
-	Grid							& ANA		& X		& 	 	\\ \hline
-	\textbf{Modules:}				&&&							\\ \hline
-	Storage							& DIG		& 		& X	 	\\ \hline
-	Producer						& DIG		& 		& X		\\ \hline
-	Consumer						& DIG		& 		& X		\\ \hline
-	\textbf{Physical interface:}	&&&							\\ \hline
-	Interface						& DIG/ANA	& X		& X	 	\\ \hline
-	Indicator						& DIG/ANA	& X		& X		\\ \hline
-				\end{tabular}
-				\caption{DIG = Digital. ANA = Analog. HW = Hardware. SW = Software}
-			\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hardware Specifications}
+As hardware we are going to use the following: 
+\\Embedded Artists LPC2478-32 Developer kit.
+\\Temperature sensor
+\\Humidity sensor
+\\Current sensor
+\\Digital Converter
+\\Power Line communication module
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Software Specifications}
+In the software part we are using the ARM processor, and we have to develop drivers for the different hardware above, we are also making the following in software:
+\\Web server
+\\Ethernet communication
+\\Storage module driver
+\\Producer module driver
+\\Consumer module driver
+\begin{table}[H]
+	\begin{tabular}{| l | c | c | c |}
+	\hline
+		Class						& Interface	& HW	& SW	\\ \hline
+		\textbf{System:}					&			&		&		\\ \hline
+		ARM							& DIG		&		& X 		\\ \hline
+		PLC module					& DIG/ANA	& X		& X 		\\ \hline
+		Power switch					& DIG/ANA	& X		& X 		\\ \hline
+		Digital Converter				& DIG/ANA	& X		& X 		\\ \hline
+		Current sensor					& DIG/ANA	& X		& X 		\\ \hline
+		\textbf{Sensor:}					&			&		&		\\ \hline
+		Temperature					& ANA		& X		& 	 	\\ \hline
+		Humidity						& ANA		& X		& 		\\ \hline
+		\textbf{Web interface:}			&			&		&		\\ \hline
+		Ethernet						& DIG		& 		& X	 	\\ \hline
+		Web server					& DIG		& 		& X		\\ \hline
+		\textbf{Other:}					&			&		&		\\ \hline
+		Grid							& ANA		& X		& 	 	\\ \hline
+		\textbf{Modules:}				&			&		&		\\ \hline
+		Storage						& DIG		& 		& X	 	\\ \hline
+		Producer						& DIG		& 		& X		\\ \hline
+		Consumer					& DIG		& 		& X		\\ \hline
+		\textbf{Physical interface:}			&			&		&		\\ \hline
+		Interface						& DIG/ANA	& X		& X	 	\\ \hline
+		Indicator						& DIG/ANA	& X		& X		\\ \hline
+	\end{tabular}
+	\caption{DIG = Digital. ANA = Analog. HW = Hardware. SW = Software}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Contracting}
+{\Huge Making a development plan.}
