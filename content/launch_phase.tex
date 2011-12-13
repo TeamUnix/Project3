@@ -1,18 +1,20 @@
 \chapter{Launch Phase}
-An initial analysis of the final system is made in order to estimate the development time it takes to develop the system. When knowing the development time of a product, this can be translated into an estimation of the total development cost. In the launch phase, everything not concerning the realization phase of the system have to be considered, in order to make a good time estimation. The black box which it will all end up with have been defined in the Pre-Project, now one layer is pilled of the box at a time, which is done in the next 3 sections. Before digging in to the realization phase a detailed development plan for the product is then defined. 
+An initial analysis of the final system is made in order to estimate the development time it takes to develop the system. When knowing the development time of a product, this can be translated into an estimation of the total development cost. In the launch phase, everything not concerning the realization phase of the system have to be considered, in order to make a good time estimation. The black box which it will all ends up with have been defined in the Pre-Project, now one layer is pilled of the box at a time, which is done in the next 3 sections. Before digging in to the realization phase a detailed development plan for the product is then defined. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Analysis}
-In the general analysis section the requirement is found and tests to check if these requirements have been fulfilled created.
+In the general analysis section the requirement is found and tests to check if these requirements have been fulfilled created. Overall function blocks for the system are drawn, different ways of interacting with the system should be defined together with the design of the final product.
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Requirement Analysis}
+From the teachers wiki \footnote{http://teachers.ede.hih.au.dk/index.php/Main\_Page} requirements have been found and listed together with the requirements defined by the customer. The requirements have been divided in groups:
 \begin{itemize}
 	\item Functional Requirements ("system shall do 'requirement' ")
 	\item Non-functional Requirements ("system shall be 'requirement' ")
 	\item Behavioural Requirements ("how the system shall react")
 	\item Performance Requirements ("how well does it have to be done")
 \end{itemize}
+Common requirements for the energy system can be found on the E10 wiki \footnote{http://e10.ede.hih.au.dk/index.php/Common\_Requirements}
 % Functional Table
 \begin{table}[H]
 	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
@@ -21,11 +23,12 @@ In the general analysis section the requirement is found and tests to check if t
 		F-1 & Communication 	&  \\ \hline
 		F-1.1 & Web Server 		& The hub shall be able to put data on a web-server. \\ \hline
 		F-1.2 & System 		& The hub shall be able to communicate with a connected module through power line communication. \\ \hline
-		F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix)\\ \hline
+		F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix: Protocol)\\ \hline
 		F-2 & Routing 			&  \\ \hline
 		F-2.1 & Direction		& When a module is connected the system shall automatically find out if it is an producer-, storage- or consumer module.\\ \hline
-		F-2.2 & Storage 		& Energy stored is routed to the consumers. \\ \hline
-		F-2.3 & Producers 		& Energy being produced is routed to the storage devices and if full directly routed to the consumers. \\ \hline
+		F-2.2 & Consumer		& Only allowed to take energy from the system. \\ \hline
+		F-2.3 & Producers 		& Only allowed to give energy to the system. \\ \hline
+		F-2.4 & Storage 		& Must acts either as a consumer or a producer. \\ \hline
 	\end{tabular}
 	\caption{Functional: System shall do...}
 \end{table}
@@ -35,11 +38,14 @@ In the general analysis section the requirement is found and tests to check if t
 	\hline
 	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 		NF-1 & User Interface 	&  \\ \hline
-		NF-1.1 & Web Interface 	& Easy to navigate. Maximum 2 click to go where you want on the webpage. \\ \hline
-		NF-1.2 & HW Interface 	& Simple; 3 diodes to show the status for each module and 1 button to change the status \\ \hline
+		NF-1.1 & Web Interface 	& Maximum 2 click to go where you want on the webpage. \\ \hline
+		NF-1.2 & HW Interface	& Able to connect 10 modules to the hub. \\ \hline
+		NF-1.3 & HW Interface	& A locker shall be unlocked to access the physical hw. \\ \hline
+		NF-1.4 & HW interface	& An Emergency stop shall be visible on the hub and shall shut down the system if pushed. \\ \hline
+		NF-1.5 & HW Interface	& 1 start button for the hub. 10 buttons to each start a module. \\ \hline
 		NF-2 & Electrical 		&  \\ \hline
 		NF-2.1 & Voltage 		& The input and output ports must work in the range 30V +/-  10\%.\\ \hline
-		NF-2.2 & Current 		& The maximum current on each port is defined to maximum 100 Amperes. \\ \hline
+		NF-2.2 & Current 		& The maximum current on each port is defined to maximum 30 Amperes. \\ \hline
 	\end{tabular}
 	\caption{Non-Function: System shall be...}
 \end{table}
@@ -47,18 +53,21 @@ In the general analysis section the requirement is found and tests to check if t
 \begin{table}[H]
 	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
 	\hline
-	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\line
 		B-1 & Status &  \\\hline
-		B-1.1 & Web Interface 	 & Warnings will be posted in the web interface. \\\hline
-		B-1.2 & Physical 		 & LEDs will show if a device is stopped or running\\\hline
-		B-1.3 & Report 			 & An e-mail will be sent to the defined user if an error occurs. \\\hline
-		B-2 & Energy Control 	 &  \\\hline
-		B-2.1 & Over-production 	 & Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
-		B-2.2 & Under-production  & If the producing modules does not produce enough energy, energy is taken from the storage modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
-		B-3 & Critical Error 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
-		B-3.1 & Humidity 		 & When the humidity is above the maximum level 70\%, stop the system. \\\hline
-		B-3.2 & Temperature High& When the temperature is higher than 65 degreese,  stop the system.\\\hline
-		B-3.2 & Temperature Low & When the temperature is below 0 degreese, stop the system\\\hline
+		B-1.1 & Web Interface	& Warnings is posted in the web interface. \\\hline
+		B-1.2 & Physical		& 1 diode showing when a module is off and one showing when it is on.\\ \hline
+		B-1.3 & Report			& An e-mail will be sent to the defined user if an error occurs. \\\hline
+		B-2 & Energy Control	&  \\\hline
+		B-2.1 & Over-production	& REWRITE
+		B-2.2 & Under-production	& REWRITE
+		
+%		B-2.1 & Over-production	& Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
+%		B-2.2 & Under-production	& If the producing modules does not produce enough energy, energy is taken from the storage modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
+		B-3 & Errors	 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
+		B-3.1 & Humidity		& If the humidity is above the maximum level 70\%, the system shuts down. \\\hline
+		B-3.2 & Temperature High& If the temperature is higher than 65 degrees,  the system shuts down.\\\hline
+		B-3.2 & Temperature Low & If the temperature is below 0 degrees, the system shuts down\\\hline
 	\end{tabular}
 	\caption{Behavioural: How the system shall react...}
 \end{table}
@@ -95,7 +104,7 @@ In the general analysis section the requirement is found and tests to check if t
 \subsubsection{Block Diagram:}
 	\begin{figure}[H]
 		\begin{centering}
-			 \includegraphics[width=0.9\textwidth]{images/block_diagram.png}
+			 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
 			\caption{Block diagram}
 	 	\end{centering}
 	\end{figure}
@@ -126,9 +135,9 @@ In the general analysis section the requirement is found and tests to check if t
 		TempBellowLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
 		TempAboveLimit 		& ~          & ~         & ~         & ~           & ~           & ~               & X      & ~ 	       & ~	\\ \hline
 		HumidityAboveLimit	 	& ~          & ~         & ~         & ~           & ~           & ~               & ~      & X 	       & ~	\\ \hline
-		InitModule 			& ~          & X         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
-		StartModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
-		StopModule 			& ~          & X         & X         & X           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
+		InitModule 			& ~          & X         & X         & X           & ~           & ~              & ~      & ~ 	       & ~	\\ \hline
+		StartModule 			& ~          & X         & X         & X           & X           & ~              & ~      & ~ 	       & ~	\\ \hline
+		StopModule 			& ~          & X         & X         & X           & X           & ~              & ~      & ~ 	       & ~	\\ \hline
 		StandbyModule 		& ~          & ~         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
 		CurrentMaxLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
 		CurrentMinLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
