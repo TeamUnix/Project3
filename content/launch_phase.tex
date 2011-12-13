@@ -17,28 +17,28 @@ From the teachers wiki \footnote{http://teachers.ede.hih.au.dk/index.php/Main\_P
 Common requirements for the energy system can be found on the E10 wiki \footnote{http://e10.ede.hih.au.dk/index.php/Common\_Requirements}
 % Functional Table
 \begin{table}[H]
-	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
 	\hline
 	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 		F-1 & Communication 	&  \\ \hline
 		F-1.1 & Web Server 		& The hub shall be able to put data on a web-server. \\ \hline
 		F-1.2 & System 		& The hub shall be able to communicate with a connected module through power line communication. \\ \hline
-		F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the shared protocol (see appendix: Protocol)\\ \hline
+		F-1.2.1 & Protocol 		& The Power Line Communication shall be done according to the common protocol (see appendix: Protocol)\\ \hline
 		F-2 & Routing 			&  \\ \hline
 		F-2.1 & Direction		& When a module is connected the system shall automatically find out if it is an producer-, storage- or consumer module.\\ \hline
 		F-2.2 & Consumer		& Only allowed to take energy from the system. \\ \hline
 		F-2.3 & Producers 		& Only allowed to give energy to the system. \\ \hline
-		F-2.4 & Storage 		& Must acts either as a consumer or a producer. \\ \hline
+		F-2.4 & Storage 		& Must acts either as a consumer or a producer (can be changed dynamically). \\ \hline
 	\end{tabular}
 	\caption{Functional: System shall do...}
 \end{table}
 % Non-Function Table
 \begin{table}[H]
-	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
 	\hline
 	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 		NF-1 & User Interface 	&  \\ \hline
-		NF-1.1 & Web Interface 	& Maximum 2 click to go where you want on the webpage. \\ \hline
+		NF-1.1 & Web Interface 	& Maximum 2 click to go where you want on the website. \\ \hline
 		NF-1.2 & HW Interface	& Able to connect 10 modules to the hub. \\ \hline
 		NF-1.3 & HW Interface	& A locker shall be unlocked to access the physical hw. \\ \hline
 		NF-1.4 & HW interface	& An Emergency stop shall be visible on the hub and shall shut down the system if pushed. \\ \hline
@@ -51,29 +51,27 @@ Common requirements for the energy system can be found on the E10 wiki \footnote
 \end{table}
 % Behavioural Table
 \begin{table}[H]
-	\begin{tabular} [b] {| c |  p{3cm} | p{10cm} |}
+	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
 	\hline
 	\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\ \hline
 		B-1 	&  Status 			&  \\ \hline
-		B-1.1 & Web Interface	& Warnings is posted in the web interface. \\\hline
+		B-1.1 & Web Interface	& Warnings are posted in the web interface. \\\hline
 		B-1.2 & Physical		& 1 diode showing when a module is off and one showing when it is on.\\ \hline
-		B-1.3 & Report			& An e-mail will be sent to the defined user if an error occurs. \\\hline
+		B-1.3 & Report			& An e-mail is sent to the defined user if an error occurs. \\\hline
 		B-2 & Energy Control	&  \\\hline
-		B-2.1 & Over-production	& REWRITE\\\hline
-		B-2.2 & Under-production	& REWRITE\\\hline
-		
-%		B-2.1 & Over-production	& Put producing devices in stand by if they are not needed (produces more energy than there is users for). \\\hline
-%		B-2.2 & Under-production	& If the producing modules does not produce enough energy, energy is taken from the storage modules (if they have some energy stored). If there is no other possibilities the hub uses the grid. \\\hline
+		B-2.1 & Over-production	& Overproduced energy is wasted in a dummy load connected to the hub. \\\hline
+		B-2.2 & Over-production	& If two or more producers are connected and one can be without, it is stopped.  \\\hline
+		B-2.2 & Under-production	& If there is no overproduction (dummy load is turned off), the grid is connected to the power line in case the producers cannot produce enough energy. \\\hline
 		B-3 & Errors	 		& Humidity and Temperature sensor will be placed inside the system housing. \\\hline
 		B-3.1 & Humidity		& If the humidity is above the maximum level 70\%, the system shuts down. \\\hline
-		B-3.2 & Temperature High& If the temperature is higher than 65 degrees,  the system shuts down.\\\hline
+		B-3.2 & Temperature High& If the temperature is higher than 55 degrees,  the system shuts down.\\\hline
 		B-3.2 & Temperature Low & If the temperature is below 0 degrees, the system shuts down\\\hline
 	\end{tabular}
 	\caption{Behavioural: How the system shall react...}
 \end{table}
 % Perfomance Table
-	\begin{table}[H]
-	\begin{tabular} [b] {| c | p{3cm} | p{10cm} |}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
 	\hline
 		\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
 		P-1 & Hardware 		&  \\ \hline
@@ -83,7 +81,63 @@ Common requirements for the energy system can be found on the E10 wiki \footnote
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Requirement tests}
-
+In order to verify that the requirements have been fulfilled, tests should be done. Most of the tests should be done together with the customer in order to get his acceptance that he received what he ordered. 
+\\After a test has finished, a binary grade will be given (pass / fail), together with a comment telling how the test went: where it was done, with whom and when it was done.
+\\[0.2cm]\textbf{Test of the Functional Requirements}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
+	\hline
+	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
+		F-1.1 	& Check if the parameters on the website is updating. The easiest parameter to validate is the uptime of the system. Check the website with half a minute in between and verify that the parameter has been updated. 	&	&\\ \hline
+		F-1.2 	& Connect a module to the hub, by connecting the module to the hubs power line (plugs on the back of the hub). If the module respond to a ping signal send from the hub, the two modules are communicating through power line. The response of the ping can be seen by using an oscilloscope and simply analyzing the packages on the power line according to the protocol. 	&	&\\ \hline
+		F-1.2.1 	& A test of the protocol is placed together with the description of it. This test is verified in corporation with the rest of the teams.	&	&\\ \hline
+		F-2.1 	& Connect 3 modules: a producer, consumer and a storage device one at the time. Verify that the hub has correctly read the modules by checking connected modules on the website.	&	&\\ \hline
+		F-2.2 	& Connect a consumer to the hub. Verify that the current flow is going to the consumer.	&	&\\ \hline
+		F-2.3 	& Connect a producer to the hub. Verify that the current flow is going to the hub.	&	&\\ \hline
+		F-2.4 	& Connect a storage device together with a producer. Verify that the current flow is only going to the storage device. Turn of the producing module and connect a consumer (note that the storage device shall have some energy stored). Verify that the current flow is only going from the storage device.	&	&\\ \hline
+	\end{tabular}
+	\caption{Functional requirement test}
+\end{table}
+\textbf{Test of the Non-Functional Requirements}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
+	\hline
+	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
+		NF-1	.1	& The user is asked to go through some simple steps. See production of a connected module. Login, start a module, stop a module. Check alternative energy production (money, CO2, bulbs).	Together with the user it is accepted that there is maximum 2 clicks to find a  certain thing on the website. &	&\\ \hline
+		NF-1	.2	& Check if there are 10 module connectors on the back of the hub module. Verify that all connectors work by connecting a module to one input at the time and check that a red diode for the module input turns on. 	&	&\\ \hline
+		NF-1	.3	& Together with the user it is verified that he cannot control the front interface without unlocking the system with a key. 	&	&\\ \hline
+		NF-1	.4	& Check that an emergency button is visible on the hub (the user decides if it is visible enough). The button is checked by getting the system up and running and pressing the emergency button. The system shall now shut down.	&	&\\ \hline
+		NF-1	.5	& It is visible inspected that 11 start buttons can be found on the physical hub interface	&	&\\ \hline
+		NF-2.1	& The voltage found on the power line is handled in the modules. Test can be found in the common requirement document. However the power line is measured with a voltmeter (without any modules on, only the grid) and shall be in the range 27-33V	&	&\\ \hline
+		NF-2.2	& The maximum current given or taken is handled in the modules. Test can be found in the common requirement document.	&	&\\ \hline
+	\end{tabular}
+	\caption{Functional requirement test}
+\end{table}
+\textbf{Test of the Behavioural Requirements}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
+	\hline
+	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
+		B-1.1	& A module is connected to the hub, depending on the available module: -Battery module: disconnect all batteries (no batteries) -Wind module: turn the turbine away from the wind (low wind) Photo-cell module: Cover the cells (low sun). If one of the above states are done, a warning message should be posted on the website	&	&\\ \hline
+		B-1.2	& Check that two diodes are shown next to a module start button (one red and one green). Connect a module, now check that the red diode turns on. Go to the website and turn on the module, check that the green diode turns on.	&	&\\ \hline
+		B-1.3	& Connect a module to the hub and start it. When the status of the module is running (see on the website), the module is unplugged. Now check the mail box of the user and verify that a mail has been received from the energy system.	&	&\\ \hline
+		B-2.1	& A dummy load and a producing module is connected to the system. As no consumers is connected, the system is overproducing. The current flow to the dummy load is measured. If the current flowing to the dummy load is the same as the one coming from the producer (maximum -10\%), the test is valid.	&	&\\ \hline
+		B-2.2	& A dummy load and a producing module is connected to the system. As no consumers is connected, the system is overproducing. A variable consuming module is now connected. The resistance in the consuming module is decreased (increasing load). The current flow to the dummy load shall now fall. When no current is flowing to the dummy load, it shall be observed that the grid is connected. This is done by increasing the load of the consuming module and measuring the current flow from the grid.	&	&\\ \hline
+		B-3.1	& A water boiler is placed below the humidity censor. A humidity interment is placed next to the hubs humidity sensor. The hubs reaction when the humidity comes above 70\% is observed. If the hub shuts off, the test has been successful.	&	&\\ \hline
+		B-3.2	& If a climate cabinet is available, the heat tests will be performed there, otherwise a heating gun will be used to increase the temperature. A temperature instrument is placed next to the hubs temperature sensor. The hubs reaction when the temperature comes above 55deg is observed. If the hub shuts off, the test has been successful.	&	&\\ \hline
+		B-3.3	& If a climate cabinet is available, the heat tests will be performed there, otherwise cooling spray will be used to decrease the temperature. A temperature instrument is placed next to the hubs temperature sensor. The hubs reaction when the temperature comes below 0deg is observed. If the hub shuts off, the test has been successful.	&	&\\ \hline
+	\end{tabular}
+	\caption{Functional requirement test}
+\end{table}
+\textbf{Test of the Performance Requirements}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
+	\hline
+	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
+		P-1.1	& Inspect the housing together with the customer, while water is being dumped on the roof and the sites of it &	&\\ \hline
+	\end{tabular}
+	\caption{Functional requirement test}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Problem Domain Analysis}
