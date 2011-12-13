@@ -49,6 +49,16 @@ Common requirements for the energy system can be found on the E10 wiki \footnote
 	\end{tabular}
 	\caption{Non-Function: System shall be...}
 \end{table}
+% Perfomance Table
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
+	\hline
+		\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
+		P-1 & Hardware 		&  \\ \hline
+		P-1.1 & Housing 		& The housing have to be water-proof, to not harm the system.\\ \hline
+	\end{tabular}
+	\caption{Performance: How well does it have to be done...}
+\end{table}
 % Behavioural Table
 \begin{table}[H]
 	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
@@ -68,16 +78,6 @@ Common requirements for the energy system can be found on the E10 wiki \footnote
 		B-3.2 & Temperature Low & If the temperature is below 0 degrees, the system shuts down\\\hline
 	\end{tabular}
 	\caption{Behavioural: How the system shall react...}
-\end{table}
-% Perfomance Table
-\begin{table}[H]
-	\begin{tabular} [b] {| p{1.2cm} |  p{3.5cm} | p{11.3cm} |}
-	\hline
-		\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\\hline
-		P-1 & Hardware 		&  \\ \hline
-		P-1.1 & Housing 		& The housing have to be water-proof, to not harm the system.\\ \hline
-	\end{tabular}
-	\caption{Performance: How well does it have to be done...}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Requirement tests}
@@ -113,6 +113,15 @@ In order to verify that the requirements have been fulfilled, tests should be do
 	\end{tabular}
 	\caption{Functional requirement test}
 \end{table}
+\textbf{Test of the Performance Requirements}
+\begin{table}[H]
+	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
+	\hline
+	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
+		P-1.1	& Inspect the housing together with the customer, while water is being dumped on the roof and the sites of it &	&\\ \hline
+	\end{tabular}
+	\caption{Functional requirement test}
+\end{table}
 \textbf{Test of the Behavioural Requirements}
 \begin{table}[H]
 	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
@@ -129,22 +138,27 @@ In order to verify that the requirements have been fulfilled, tests should be do
 	\end{tabular}
 	\caption{Functional requirement test}
 \end{table}
-\textbf{Test of the Performance Requirements}
-\begin{table}[H]
-	\begin{tabular} [b] {| p{1.2cm} |  p{9.3cm} | p{1.2cm} | p{3.8cm} |}
-	\hline
-	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
-		P-1.1	& Inspect the housing together with the customer, while water is being dumped on the roof and the sites of it &	&\\ \hline
-	\end{tabular}
-	\caption{Functional requirement test}
-\end{table}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
 \subsection{Problem Domain Analysis}
+Everything that should be controlled by the system-to-be will be defined here. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Block Diagram:}
+Block diagram of the hub. Showing all the things that the hub should interface with.
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.78\textwidth]{images/block_diagram.png}
+			\caption{Block diagram}
+	 	\end{centering}
+	\end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Block Diagram: Candidates in the system}
 \begin{itemize}
-	\item \textbf{Power Switch:} Part of the hub that turns on and off power to its modules.
+	\item \textbf{Power Switch:} Part of the hub that powers the connected modules on or off.
 	\item \textbf{Consumers} Modules that consumes power (e.g. light, washing machine, electric car)
 	\item \textbf{Producers:} Modules that delivers energy to the hub (e.g. Wind-turbine, photovoltaic-cells)
 	\item \textbf{Storage:} Modules that both consumes when the system over produces and "produces" (gives energy to the consumers) when needed (e.g. battery, air compressor). 
@@ -154,16 +168,10 @@ In order to verify that the requirements have been fulfilled, tests should be do
 	\item \textbf{Humidity:} Unit that measures the humidity where the system is places. If the humidity is too high the hardware might be damaged.
 	\item \textbf{Ethernet:} Unit that has connection to an internet database.
 \end{itemize}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Block Diagram:}
-	\begin{figure}[H]
-		\begin{centering}
-			 \includegraphics[width=0.7\textwidth]{images/block_diagram.png}
-			\caption{Block diagram}
-	 	\end{centering}
-	\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Block Diagram: Events in the system}
+All candidates shown in the block diagram.
 	\begin{itemize}
 		\item TemperatureBelowLimit
 		\item TemperatureAboveLimit
@@ -182,6 +190,7 @@ In order to verify that the requirements have been fulfilled, tests should be do
 		\item UpdateServer
 	\end{itemize}
 \textbf{Table with all the above candidates and event combined:}
+All the different events that can happen in a block or sent between blocks. 
 	\begin{table}[H]
 	\begin{tabular}{| r | c |c | c | c | c | c | c | c | c |}
 	\hline
@@ -202,28 +211,31 @@ In order to verify that the requirements have been fulfilled, tests should be do
 		UpdateModuleLogFile 	& ~          & ~         & X         & ~           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
 		UpdateServer			& ~          & ~         & ~         & ~           & ~           & ~               & ~      & ~ 	       & X	\\ \hline
 	\end{tabular}
+	\caption{Class diagram of all the hubs events and candidates.}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{State Machine Diagram}\textbf{ }\\
-	\textbf{Description of the different states: }
+Digging deeper into the hub module, states in the different blocks is defined. 
+\\[0.2cm] \underline{\textbf{Micro Processor (ARM) states:}}
+\\[0.2cm] \textbf{Description of the different states: }
 	\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
 	\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
 	\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits, a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
-	\\\textbf{Standby: }If the system overproduces (produces more energy than there is users for), it will standby some of the energy-producing modules.
-	\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module, either by using a start button on the hub or from the web interface.
-	\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on the module or from web interface) to make sure all data is saved.
+	\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module from the web interface.
+	\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on web interface) to make sure all data is saved.
 	\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules, tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module powers off itself. 
 	\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database (uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
-	\\\textbf{Warning: }Is sent if the system tries to set a submodule in standby- , start- or stop mode, but after a while it has not changed (timeout). After the timeout state, the system returns to run state.
+	\\\textbf{Warning: }Is sent if the system tries to set a submodule in start- or stop mode, but after a while it has not changed (timeout). After the timeout state, the system returns to run state.
 	\begin{figure}[H]
 		\begin{centering}
-			 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
+			 \includegraphics[width=0.9\textwidth]{images/statemachine.png}
 		\caption{State Machine Diagram}
 	 	\end{centering}
 	\end{figure}
-
+\textbf{{\Huge Make more machines. WEB for instance!!!\\Remove STANDBY FROM state machine!!!}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Usage Domain Analysis}
+A description of all the different users to the system and the actions each user are allowed to do.
 	\textbf{Web user - Log in}
 	\\\textit{Description: }
 	An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to start and stop modules.
@@ -278,6 +290,9 @@ In order to verify that the requirements have been fulfilled, tests should be do
 	\\\textbf{Disconnect module}
 	\\\textit{Description: }
 	Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Use cases}
+	\textbf{\Huge Make drawings instead of tables!!!}
 	
 \begin{table}[H]
 	\begin{tabular}{| r | c | c |}
@@ -303,8 +318,7 @@ In order to verify that the requirements have been fulfilled, tests should be do
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Interface Analysis}
-\textbf{Physical interface: } The hardware interface as seen from the users perspective. Note, new modules is connected on the back of the hub.
-
+\textbf{\Huge Insert new drawing of the HUB front!!!}
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
@@ -313,14 +327,13 @@ In order to verify that the requirements have been fulfilled, tests should be do
 \end{figure}
 \textbf{\huge SHORT RESUME OF THE IDE REPORT}
 \\\textbf{WebInterface: }
+\\\\\textbf{\huge INSERT NEW PICTURE OF THE WEBPAGE}
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.82\textwidth]{images/web_interface1.jpg}
 		\caption{Web interface; user interaction with the web interface}
  	\end{centering}
 \end{figure}
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Function Analysis}
@@ -387,9 +400,12 @@ Diagram of how to put data on the web server.
  	\end{centering}
 \end{figure}		
 
+\textbf{\huge MORE DIAGRAMS :D}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Architecture Design}
+\textbf{\huge What is this all about ??? Update design criteria from IDE}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Design Criteria}
@@ -421,6 +437,7 @@ Notes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Architecture Dynamics}
 Hubs communication with submodules
+\\\\\textbf{\huge Write intro. Maybe include physical interface in a diagram}\\\\
 \textbf{Sequence Diagrams}
 \begin{figure}[H]
 	\begin{centering}
@@ -432,7 +449,7 @@ Hubs communication with submodules
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Technical Platform}
-
+\textbf{\huge Write intro.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Hardware Specifications}
 As hardware we are going to use the following: 
@@ -483,4 +500,4 @@ In the software part we are using the ARM processor, and we have to develop driv
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Contracting}
-{\Huge Making a development plan.}
+\textbf{\Huge Making a development plan.}
