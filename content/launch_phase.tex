@@ -232,7 +232,36 @@ Digging deeper into the hub module, states in the different blocks is defined.
 		\caption{State Machine Diagram of the}
 	 	\end{centering}
 	\end{figure}
-\todo[inline]{Make more machines. WEB for instance!!!\\Remove STANDBY FROM state machine!!!}
+	
+\underline{\textbf{Web Server\:}}
+\p \textbf{Description of the different states: }
+	\textbf{Listening: }The system will listen the TCP / IP port until an event happens, e.g.  a new module is connected, a module should be removed, new data to the data base, user event from the web interface etc.
+	\textbf{Webservices:} The web server will execute a PHP script, this will perform requests to the database and send start and stop commands to the hub.
+	\p
+	Webservices:
+	\\- insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
+	\\- selectData: show data to the user on the web page, this is a dynamic request.
+	\\- clearData: resets database, by erasing the database and recreating and populating.
+	\\- sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
+	\\- sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
+	
+
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.9\textwidth]{images/state_web.png}
+		\caption{State Machine Diagram of the Web Server}
+	 	\end{centering}
+	\end{figure}
+	\p
+	Database structure:
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.9\textwidth]{images/db_prop.png}
+		\caption{Database Structure}
+	 	\end{centering}
+	\end{figure}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Usage Domain Analysis}
 A description of all the different users to the system and the actions each user are allowed to do.
@@ -439,7 +468,14 @@ Notes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Architecture Dynamics}
 The sequence diagram explain the dynamics of more complex parts of the system, this diagram is important for estimating the price and time for the development, by giving the developer a better understanding of how the system works.
-\\ \todo[inline]{include physical interface in a diagram}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/phy_sys.png}
+		\caption{Sequence diagram; Communication between the system and external systems.}
+ 	\end{centering}
+\end{figure}
+
 \textbf{Sequence Diagrams}
 \begin{figure}[H]
 	\begin{centering}
