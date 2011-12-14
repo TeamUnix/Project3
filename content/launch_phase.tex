@@ -399,22 +399,25 @@ Diagram of how to put data on the web server.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{General Architecture Design}
-\todo[inline]{What is this all about ??? Update design criteria from IDE}
-
+Design criteria is important to consider in order to choose the right technical platform to perform the criteria. When marketing the product design criteria is very important, in making the specification for the product.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Design Criteria}
 Write in what parts should be used (mostly off the shelf things).
 \begin{table}[H]
 	\begin{tabular}{| r | c | c | c | c | c |}
 	\hline
-		Issue & Critical & Very Important & Important & Less Important & Notes \\ \hline
-		Safe					& X & ~ & ~ & ~ & 1 \\ \hline
-		Performance 			& ~ & ~ & X & ~ & 2 \\ \hline
-		Usage 				& X & ~ & ~ & ~ & 3 \\ \hline
-		Reliability 			& X & ~ & ~ & ~ & 4 \\ \hline
-		Easy serviceable 		& ~ & X & ~ & ~ & 5 \\ \hline
-		Remote maintenance 	& ~ & ~ & X & ~ & 6 \\ \hline
-		Cost effective 			& ~ & ~ & ~ & X & 7 \\ \hline
+		Issue 					& Critical 	& Very Important 	& Important	& Less Important	& Notes \\ \hline
+		Safe					& X 		& ~ 				& ~			& ~ 				& 1 \\ \hline
+		Performance 			& ~			& ~ 				& X 		& ~ 				& 2 \\ \hline
+		Usage 					& X 		& ~ 				& ~ 		& ~ 				& 3 \\ \hline
+		Reliability 			& X 		& ~ 				& ~ 		& ~ 				& 4 \\ \hline
+		Easy serviceable 		& ~ 		& X 				& ~ 		& ~ 				& 5 \\ \hline
+		Remote maintenance 		& ~ 		& ~ 				& X 		& ~ 				& 6 \\ \hline
+		Cost effective 			& ~ 		& ~ 				& ~ 		& X 				& 7 \\ \hline
+		Learnability			& ~ 		& X 				& ~ 		& ~ 				& 8 \\ \hline
+		Memorability			& ~ 		& X 				& ~ 		& ~ 				& 9 \\ \hline
+		Effectiveness			& ~ 		& ~ 				& X 		& ~ 				& 10 \\ \hline
+		Utility					& ~ 		& ~ 				& ~ 		& X 				& 11 \\ \hline
 	\end{tabular}
 	\end{table}
 Notes:
@@ -426,12 +429,17 @@ Notes:
 	\item The user of the system should be able to find eventual errors on the system by him self, with help from a good error log created by the system.
 	\item The only thing possible to maintain remotely is start and stop of submodules + power down the whole system, which is less important as the system is placed locally.
 	\item Only one kind of the system is to be produces, but still the price should be kept at a relatively low level (as we have an undefined maximum price of the system).
+	\item As the system is meant to be operated by a non-technically persons, learning the system shall be fast and operating the system shall therefore be very intuitive. Also visitors should be able to do simple tasks on the system, such as turn a device on or off.
+	\item Mainly the system is supposed to run by it self without any interaction. But when the system is going to be operated on, or the system is showed for visitors, the instructed person(s) shall be able to do so without any preparation time.
+	\item The effectiveness of the system is not the most important factor, but still quite important as the talk is about a green system, which must be
+	affordable for the user to implement the system. When investing in a green system, it will have information about estimated lifetime and buy time (the time it takes the system to `buy home itself'). If the buy time is to long, maybe longer than the lifetime, the price for having such a system will be way to high. The goal is that visitors can see the advantage in buying a green system (environmental and money friendly), so it might affect them to be more environmental friendly. 
+	\item The possibility of changing parameters in the system should be kept as low as possible to easy the interaction with the system. If the user have too many ways of setting up the system it can easily confuse more than necessary. Therefore only the most important things that the user should be able to change is implemented, rest of the settings is placed as hidden utilities (only to be set up by the developers during tests). 
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Architecture Dynamics}
-Hubs communication with submodules
-\\ \todo[inline]{Write intro. Maybe include physical interface in a diagram}
+The sequence diagram explain the dynamics of more complex parts of the system, this diagram is important for estimating the price and time for the development, by giving the developer a better understanding of how the system works.
+\\ \todo[inline]{include physical interface in a diagram}
 \textbf{Sequence Diagrams}
 \begin{figure}[H]
 	\begin{centering}
