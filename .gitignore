@@ -18,6 +18,7 @@
 *.project
 *.DS_Store
 *.toc
+*.tdo
 #
 
 #	VHDL
