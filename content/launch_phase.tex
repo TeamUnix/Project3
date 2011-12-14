@@ -239,12 +239,13 @@ Digging deeper into the hub module, states in the different blocks is defined.
 	\textbf{Webservices:} The web server will execute a PHP script, this will perform requests to the database and send start and stop commands to the hub.
 	\p
 	Webservices:
-	\\- insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
-	\\- selectData: show data to the user on the web page, this is a dynamic request.
-	\\- clearData: resets database, by erasing the database and recreating and populating.
-	\\- sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
-	\\- sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
-	
+		\begin{itemize}
+		\item insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
+		\item selectData: show data to the user on the web page, this is a dynamic request.
+		\item clearData: resets database, by erasing the database and recreating and populating.
+		\item sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
+		\item sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
+	\end{itemize}
 
 	\begin{figure}[H]
 		\begin{centering}
@@ -252,6 +253,10 @@ Digging deeper into the hub module, states in the different blocks is defined.
 		\caption{State Machine Diagram of the Web Server}
 	 	\end{centering}
 	\end{figure}
+	
+\subsubsection{Database structure}
+
+The database is using a common data structure for all the modules, since some of the modules have their own characteristics a different type of saving that specific data will be discussed in group meeting further in this project. 
 	
 	Database structure:\p
 	\begin{figure}[H]
