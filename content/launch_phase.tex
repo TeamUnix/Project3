@@ -111,7 +111,7 @@ In order to verify that the requirements have been fulfilled, tests should be do
 		NF-2.1	& The voltage found on the power line is handled in the modules. Test can be found in the common requirement document. However the power line is measured with a voltmeter (without any modules on, only the grid) and shall be in the range 27-33V	&	&\\ \hline
 		NF-2.2	& The maximum current given or taken is handled in the modules. Test can be found in the common requirement document.	&	&\\ \hline
 	\end{tabular}
-	\caption{Functional requirement test}
+	\caption{Non-Functional requirement test}
 \end{table}
 \textbf{Test of the Performance Requirements}
 \begin{table}[H]
@@ -120,7 +120,7 @@ In order to verify that the requirements have been fulfilled, tests should be do
 	\textbf{ID} & \textbf{Test Description} & \textbf{Grade} & \textbf{Comment} \\\hline
 		P-1.1	& Inspect the housing together with the customer, while water is being dumped on the roof and the sites of it &	&\\ \hline
 	\end{tabular}
-	\caption{Functional requirement test}
+	\caption{Performance requirement test}
 \end{table}
 \textbf{Test of the Behavioural Requirements}
 \begin{table}[H]
@@ -136,7 +136,7 @@ In order to verify that the requirements have been fulfilled, tests should be do
 		B-3.2	& If a climate cabinet is available, the heat tests will be performed there, otherwise a heating gun will be used to increase the temperature. A temperature instrument is placed next to the hubs temperature sensor. The hubs reaction when the temperature comes above 55deg is observed. If the hub shuts off, the test has been successful.	&	&\\ \hline
 		B-3.3	& If a climate cabinet is available, the heat tests will be performed there, otherwise cooling spray will be used to decrease the temperature. A temperature instrument is placed next to the hubs temperature sensor. The hubs reaction when the temperature comes below 0deg is observed. If the hub shuts off, the test has been successful.	&	&\\ \hline
 	\end{tabular}
-	\caption{Functional requirement test}
+	\caption{Behavioural requirement test}
 \end{table}
 
 
@@ -229,10 +229,38 @@ Digging deeper into the hub module, states in the different blocks is defined.
 	\begin{figure}[H]
 		\begin{centering}
 			 \includegraphics[width=0.9\textwidth]{images/statemachine.png}
-		\caption{State Machine Diagram of the}
+		\caption{State Machine Diagram of the system}
 	 	\end{centering}
 	\end{figure}
-\todo[inline]{Make web diagram!!!}
+	
+\underline{\textbf{Web Server\:}}
+\p \textbf{Description of the different states: }
+	\textbf{Listening: }The system will listen the TCP / IP port until an event happens, e.g.  a new module is connected, a module should be removed, new data to the data base, user event from the web interface etc.
+	\textbf{Webservices:} The web server will execute a PHP script, this will perform requests to the database and send start and stop commands to the hub.
+	\p
+	Webservices:
+	\\- insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
+	\\- selectData: show data to the user on the web page, this is a dynamic request.
+	\\- clearData: resets database, by erasing the database and recreating and populating.
+	\\- sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
+	\\- sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
+	
+
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.9\textwidth]{images/state_web.png}
+		\caption{State Machine Diagram of the Web Server}
+	 	\end{centering}
+	\end{figure}
+	\p
+	Database structure:
+	\begin{figure}[H]
+		\begin{centering}
+			 \includegraphics[width=0.9\textwidth]{images/db_prop.png}
+		\caption{Database Structure}
+	 	\end{centering}
+	\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Usage Domain Analysis}
 A description of all the different users to the system and the actions each user are allowed to do.
@@ -425,7 +453,14 @@ Notes:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Architecture Dynamics}
 The sequence diagram explain the dynamics of more complex parts of the system, this diagram is important for estimating the price and time for the development, by giving the developer a better understanding of how the system works.
-\\ \todo[inline]{include physical interface in a diagram}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/phy_sys.png}
+		\caption{Sequence diagram; Communication between the system and external systems.}
+ 	\end{centering}
+\end{figure}
+
 \textbf{Sequence Diagrams}
 \begin{figure}[H]
 	\begin{centering}
@@ -493,5 +528,27 @@ In the software part we are using the ARM processor, and we have to develop driv
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Contracting}
-
-\todo[inline]{Making a development plan.}
+\begin{table}[H]
+	\begin{tabular}{| p{1cm} |p{5cm}|p{10cm}|}
+		\hline
+		Week&	Task					&			Note 						\\\hline
+		5 	& 							&	EMC course, Meeting with MOJ and KK	\\\hline
+		6	& 							&				 						\\\hline
+		7	& 							&	Meeting with MOJ and KK			 	\\\hline
+		8	& 							&				 						\\\hline
+		9	& 							&	Meeting with MOJ and KK			 	\\\hline
+		10	& 							&				 						\\\hline
+		11	& 							&	Meeting with MOJ and KK			 	\\\hline
+		12	& 							&				 						\\\hline
+		13	& 							&	Meeting with MOJ and KK, Project week\\\hline
+		14	& 							&	Easter holiday					 	\\\hline
+		15	& 							&	Meeting with MOJ and KK			 	\\\hline
+		16	& 							&				 						\\\hline
+		17	& 							&	Meeting with MOJ and KK			 	\\\hline
+		18	& 							&				 						\\\hline
+		19	& 							&	Meeting with MOJ and KK			 	\\\hline
+		20	& 							&	Project week			 			\\\hline
+		21	& 							&	Meeting with MOJ and KK, Project week, submit project \\\hline
+	\end{tabular}
+	\caption{Time plan for 4. semester}
+\end{table}
