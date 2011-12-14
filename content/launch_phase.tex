@@ -214,10 +214,10 @@ All the different events that can happen in a block or sent between blocks.
 	\caption{Class diagram of all the hubs events and candidates.}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{State Machine Diagram}\textbf{ }\\
+\subsubsection{State Machine Diagram}
 Digging deeper into the hub module, states in the different blocks is defined. 
-\\[0.2cm] \underline{\textbf{Micro Processor (ARM) states:}}
-\\[0.2cm] \textbf{Description of the different states: }
+\p \underline{\textbf{Micro Processor (ARM) states:}}
+\p \textbf{Description of the different states: }
 	\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
 	\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
 	\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits, a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
@@ -229,7 +229,7 @@ Digging deeper into the hub module, states in the different blocks is defined.
 	\begin{figure}[H]
 		\begin{centering}
 			 \includegraphics[width=0.9\textwidth]{images/statemachine.png}
-		\caption{State Machine Diagram}
+		\caption{State Machine Diagram of the}
 	 	\end{centering}
 	\end{figure}
 \todo[inline]{Make more machines. WEB for instance!!!\\Remove STANDBY FROM state machine!!!}
@@ -312,24 +312,25 @@ A description of all the different users to the system and the actions each user
 \subsection{Interface Analysis}
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
-		\caption{User interacting with the physical hub module}
+		 \includegraphics[width=0.75\textwidth]{images/hub_user_interact.png}
+		\caption{Final design of the hubs physical interface.}
 	\end{centering}
 \end{figure}
 In EIDE1 course the interaction design was made for the web interface and the physical interface for the hub, with different design sessions the user needs and the design for the two interfaces was determined to be made. The IDE report is included in appendix\\
 \\\textbf{WebInterface:} In EWEB course a static web interface was developed with the knowledge gained from the interaction design sessions and developed in HTML, the WEB report is included in appendix.
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.7\textwidth]{images/screen_hub_page.png}
-		\caption{Web interface; user interaction with the hub page}
+		 \includegraphics[width=0.69\textwidth]{images/screen_hub_page.png}
+		\caption{The final web interface design, showing the hub module page}
  	\end{centering}
 \end{figure}
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.7\textwidth]{images/screen_index_page.png}
-		\caption{Web interface; user interaction with the index page}
+		 \includegraphics[width=0.69\textwidth]{images/screen_index_page.png}
+		\caption{The final web interface design, showing index page}
  	\end{centering}
 \end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Function Analysis}
 From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.
