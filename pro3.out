@@ -1,0 +1,31 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{PreProject}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Rich Picture}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Story Telling}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Story cards}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.4}{Preliminary Use Cases}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.5}{Stakeholder Analysis}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.6}{System Definition}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Launch Phase}{}% 9
+\BOOKMARK [1][-]{section.3.1}{General Analysis}{chapter.3}% 10
+\BOOKMARK [2][-]{subsection.3.1.1}{Requirement Analysis}{section.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.1.2}{Requirement tests}{section.3.1}% 12
+\BOOKMARK [2][-]{subsection.3.1.3}{Problem Domain Analysis}{section.3.1}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.3.1}{Block Diagram:}{subsection.3.1.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.3.2}{Block Diagram: Candidates in the system}{subsection.3.1.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.1.3.3}{Block Diagram: Events in the system}{subsection.3.1.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.1.3.4}{State Machine Diagram}{subsection.3.1.3}% 17
+\BOOKMARK [2][-]{subsection.3.1.4}{Usage Domain Analysis}{section.3.1}% 18
+\BOOKMARK [3][-]{subsubsection.3.1.4.1}{Use cases}{subsection.3.1.4}% 19
+\BOOKMARK [2][-]{subsection.3.1.5}{Interface Analysis}{section.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.1.6}{Function Analysis}{section.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.1.7}{System Dynamics}{section.3.1}% 22
+\BOOKMARK [1][-]{section.3.2}{General Architecture Design}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.2.1}{Design Criteria}{section.3.2}% 24
+\BOOKMARK [2][-]{subsection.3.2.2}{Architecture Dynamics}{section.3.2}% 25
+\BOOKMARK [1][-]{section.3.3}{Technical Platform}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.1}{Hardware Specifications}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.2}{Software Specifications}{section.3.3}% 28
+\BOOKMARK [1][-]{section.3.4}{Contracting}{chapter.3}% 29
+\BOOKMARK [0][-]{chapter.4}{Conclusion}{}% 30
+\BOOKMARK [0][-]{chapter.5}{Appendix}{}% 31

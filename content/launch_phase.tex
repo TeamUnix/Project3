@@ -292,33 +292,24 @@ A description of all the different users to the system and the actions each user
 	Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Use cases}
-	\textbf{\Huge Make drawings instead of tables!!!}
-	
-\begin{table}[H]
-	\begin{tabular}{| r | c | c |}
-	\hline
-		Number	& On system user	& System \\ \hline
-		1		& Plug in module	& ~ \\ \hline
-		2		& ~					& Initialize module \\ \hline
-		3		& Start module		& ~ \\ \hline
-		4		& ~					& Turning on the module \\ \hline
-	\end{tabular}
-	\caption{Example of \textit{on system user} interaction}
-\end{table}
 
-\begin{table}[H]
-	\begin{tabular}{| r | c | c |}
-	\hline
-		Number	& Hub				& System \\ \hline
-		1		& Check the power production (it is to low)	& ~ \\ \hline
-		2		& ~											& Setting the module to standby \\ \hline
-	\end{tabular}
-	\caption{Example of \textit{hub} user interaction}
-\end{table}	
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/sys_int.png}
+		\caption{Example of \textit{on system user} interaction}
+	\end{centering}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{centering}
+		 \includegraphics[width=0.8\textwidth]{images/hub_int.png}
+		\caption{Example of \textit{hub} user interaction}
+	\end{centering}
+\end{figure}
+	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Interface Analysis}
-\todo[inline]{Insert new drawing of the HUB front!!!}
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
