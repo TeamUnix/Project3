@@ -216,16 +216,16 @@ All the different events that can happen in a block or sent between blocks.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{State Machine Diagram}
 Digging deeper into the hub module, states in the different blocks is defined. 
-\p \underline{\textbf{Micro Processor (ARM) states:}}
+\\[0.5cm] \underline{\textbf{Micro Processor (ARM) states:}}
 \p \textbf{Description of the different states: }
 	\\ After the initialization of all modules connected to the hub, the system is in  \textit{Idle Mode}.
-	\\\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
-	\\\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits, a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
-	\\\textbf{Start: }Whenever a new module is connected it waits for the user to start the module from the web interface.
-	\\\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on web interface) to make sure all data is saved.
-	\\\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules, tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module powers off itself. 
-	\\\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database (uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
-	\\\textbf{Warning: }Is sent if the system tries to set a submodule in start- or stop mode, but after a while it has not changed (timeout). After the timeout state, the system returns to run state.
+	\p\textbf{Idle: } After initialization the hub goes into idle mode. The hub stays in idle mode until a start signal is given from the user (from the web or the physical hub interface). 
+	\p\textbf{Run mode: }The system stays in Run Mode until an event happens, e.g. temperature or humidity reaches their limits, a new module is connected, a module should be removed, the system is over-/underproducing, the log should be updated etc.
+	\p\textbf{Start: }Whenever a new module is connected it waits for the user to start the module from the web interface.
+	\p\textbf{Stop: }To securely disconnect a module, the user must use the disconnect button (on web interface) to make sure all data is saved.
+	\p\textbf{Shut down: }If the system finds itself in a critical condition (temperature, humidity, communication problems) it shutdown it's connected modules, tries to save all available data to the log. Then it sends an message (in form of e-mail) to the user, describing the problem, and the module powers off itself. 
+	\p\textbf{Connect module: } The system checks if it has seen exactly that module before, if that is the case it updates variables from the database (uptime, production etc.). If the module is new for the system, it creates it in the database and gives it an unique id.
+	\p\textbf{Warning: }Is sent if the system tries to set a submodule in start- or stop mode, but after a while it has not changed (timeout). After the timeout state, the system returns to run state.
 	\begin{figure}[H]
 		\begin{centering}
 			 \includegraphics[width=0.8\textwidth]{images/statemachine.png}
@@ -239,13 +239,12 @@ Digging deeper into the hub module, states in the different blocks is defined.
 	\textbf{Webservices:} The web server will execute a PHP script, this will perform requests to the database and send start and stop commands to the hub.
 	\p
 	Webservices:
-	\begin{itemize}
-		\item insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
-		\item selectData: show data to the user on the web page, this is a dynamic request.
-		\item clearData: resets database, by erasing the database and recreating and populating.
-		\item sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
-		\item sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
-	\end{itemize}
+	\\- insertData: inserts new data to table ( module\_id, current, voltage, time of measure, status, efficiency  ) this are the data common to all modules.
+	\\- selectData: show data to the user on the web page, this is a dynamic request.
+	\\- clearData: resets database, by erasing the database and recreating and populating.
+	\\- sendCmd ( Start / Stop / Cmd ): commands send from the web interface to control the system and different modules.
+	\\- sendWarning: shows an warning in the web interface and the administrator receives a warning in the defined email address.
+	
 
 	\begin{figure}[H]
 		\begin{centering}
@@ -254,10 +253,7 @@ Digging deeper into the hub module, states in the different blocks is defined.
 	 	\end{centering}
 	\end{figure}
 	
-\subsubsection{Database structure}
-
-The database is using a common data structure for all the modules, since some of the modules have their own characteristics a different type of saving that specific data will be discussed in group meeting further in this project. 
-
+	Database structure:\p
 	\begin{figure}[H]
 		\begin{centering}
 			 \includegraphics[width=0.9\textwidth]{images/db_prop.png}
@@ -265,64 +261,44 @@ The database is using a common data structure for all the modules, since some of
 	 	\end{centering}
 	\end{figure}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Usage Domain Analysis}
 A description of all the different users to the system and the actions each user are allowed to do.
-	\textbf{Web user - Log in}
-	\\\textit{Description: }
-	An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to start and stop modules.
-	\\\textbf{Web user - Visitors}
-	\\\textit{Description: }
-	This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
-	\\\textbf{Hub}
-	\\\textit{Description: }
-	The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
-	\\\textbf{Engineer}
-	\\\textit{Description: }
-	The engineer is any person with knowledge about how the system works on technical level. This user is able to reprogram the whole system and have permission to everything.
-	\\\textbf{On system user}
-	\\\textit{Description: }
-	On system user is any user that go to the physical system and operates on it. This user is able to start and stop the connected modules to the hub.
-	\\\\\textbf{Plug in module}
-	\\\textit{Description: }
-	The user should be able to plug in different modules to the system, this is only possible when you stand physical at the system, so this use case is only included for the	\textit{On system user}.
-	\\\textbf{Unplug module}
-	\\\textit{Description: }
-	Like plugging in modules this use case is only included for the \textit{On system user}.
-	\\\textbf{Start/Stop module}
-	\\\textit{Description: }
-	The capability of turning modules on and off is included in the \textit{On system user}, \textit{Engineer}, \textit{Hub} and the \textit{Web user - Log in}.
-	\\\textbf{Start/Stop system}
-	\\\textit{Description: }
-	The capability of turning the system on and off is included in the \textit{On system user}, \textit{Hub} and the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
-	\\\textbf{View Production/Consumption of module}
-	\\\textit{Description: }
-	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{View temperature}
-	\\\textit{Description: }
-	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{View log of module}
-	\\\textit{Description: }
-	It is possible for the \textit{Web user - Log in}, \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{View humidity}
-	\\\textit{Description: }
-	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{Initialize module}
-	\\\textit{Description: }
-	It is only possible for the \textit{Hub} to initialize modules.
-	\\\textbf{Standby a module}
-	\\\textit{Description: }
-	Setting modules in standby mode is only possible for the \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{View energy level of storage modules}
-	\\\textit{Description: }
-	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
-	\\\textbf{Create log file}
-	\\\textit{Description: }
-	Creating a log file for a module is only possible for the \textit{Hub}.
-	\\\textbf{Disconnect module}
-	\\\textit{Description: }
-	Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
+\p \textbf{Web user - Log in}
+\\\textit{Description: }An user with administrator privileges that can login to the web interface of the system. This user can manage the energy hub from a computer or mobile device via the web page and have permission to start and stop modules.
+\p\textbf{Web user - Visitors}
+\\\textit{Description: }	This visitor of the web interface can only see info and data on the web page for the system. This user do not have permission to manage anything.
+\p\textbf{Hub}
+\\\textit{Description: }	The Hub actor is the system, that have the ability to make action on its own, for example it have to be able to shutdown a module if an error occurs on that module.
+\p\textbf{Engineer}
+\\\textit{Description: }The engineer is any person with knowledge about how the system works on a technical level. This user is able to reprogram the whole system and have permission to everything.
+\p\textbf{On system user}
+\\\textit{Description: }	On system user is any user that go to the physical system and operates on it. This user is able to turn modules connected to the hub on or off.
+\p
+\p\textbf{Plug in module}
+\\\textit{Description: }	The user should be able to plug in different modules to the system, this is only possible when you stand physically next to the system, so this use case is only included for the \textit{On system user}.
+\p\textbf{Unplug module}
+\\\textit{Description: }Like plugging in modules this use case is only included for the \textit{On system user}.
+\p\textbf{Start/Stop module}
+\\\textit{Description: }The capability of turning modules on and off is included in the \textit{Engineer} and the \textit{Web user - Log in}.
+\p\textbf{Start/Stop system}
+\\\textit{Description: }The capability of turning the system on and off is included in the \textit{Engineer}. The \textit{Web user - Log in} do not have the option to turn the system on.
+\p\textbf{View Production/Consumption of module}
+\\\textit{Description: }It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+\p\textbf{View temperature}
+\\\textit{Description: }It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+\p\textbf{View log of module}
+\\\textit{Description: }It is possible for the \textit{Web user - Log in}, \textit{Hub} and the \textit{Engineer}.
+\p\textbf{View humidity}
+\\\textit{Description: }It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+\p\textbf{Initialize module}
+\\\textit{Description: }It is only possible for the \textit{Hub} to initialize modules.
+\p\textbf{View energy level of storage modules}
+\\\textit{Description: }	It is possible for the \textit{Web user - Log in}, \textit{Web user - Visitors}, \textit{Hub} and the \textit{Engineer}.
+\p\textbf{Create log file}
+\\\textit{Description: }Creating a log file for a module is only possible for the \textit{Hub}.
+\p\textbf{Disconnect module}
+\\\textit{Description: }Disconnecting a module without unplugging it is only possible for the \textit{Hub} and the \textit{Engineer}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Use cases}
 
@@ -343,14 +319,14 @@ A description of all the different users to the system and the actions each user
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Interface Analysis}
+In the EIDE1 course the interaction design was made for the web interface and the physical interface for the hub, with different design sessions. The user needs and the design for the two interfaces was determined to be made. The IDE report is included in the appendix.
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.75\textwidth]{images/hub_user_interact.png}
 		\caption{Final design of the hubs physical interface.}
 	\end{centering}
 \end{figure}
-In EIDE1 course the interaction design was made for the web interface and the physical interface for the hub, with different design sessions the user needs and the design for the two interfaces was determined to be made. The IDE report is included in appendix\\
-\\\textbf{WebInterface:} In EWEB course a static web interface was developed with the knowledge gained from the interaction design sessions and developed in HTML, the WEB report is included in appendix.
+\textbf{WebInterface:} In EWEB course a static web interface was developed with the knowledge gained from the interaction design sessions and developed in HTML, the WEB report is included in appendix.
 \begin{figure}[H]
 	\begin{centering}
 		 \includegraphics[width=0.69\textwidth]{images/screen_hub_page.png}
@@ -369,53 +345,58 @@ In EIDE1 course the interaction design was made for the web interface and the ph
 From an analytic perspective, functions are very useful as they are intended to elaborate the objective of the system. When defining functions the question is, \textit{what is the system supposed to do?} In the usage part, it was concerned \textit{how} the system should be used. This makes the usage and functions closely connected, since it is difficult to talk about how a system is being used without discussing what it should do.
 \\\\ When analyzing functions the object is to get a complete list of all the functions the system must implement. The goal is not to describe every single function in detail, quite the contrary the goal is to identify the functions.
 \\\\ Functions can be grouped into types. There are four different types of functions:
-\\\\ \textit{Update} is a type defining functions which are activated by a problem or application domain event, and which results in a change in the model's state.
-\\\\ The type \textit{Signal} defines a function which is triggered by a change in the model's state. Running the function always results in a reaction to its surroundings: that is either the reaction is a display to the actors in the problem domain or else the reacting a direct intervention in the problem domain.
+\\\\ \textit{Update} is a type defining functions which are activated by a problem or application domain event, and which results in a change in the models state.
+\\\\ The type \textit{Signal} defines a function which is triggered by a change in the models state. Running the function always results in a reaction to its surroundings: that is either the reaction is a display to the actors in the problem domain or else the reacting a direct intervention in the problem domain.
 \\\\ When an actor has need for information the function of type \textit{Read} is activated. The function is displaying the relevant data of the model to the actor.
 \\\\ Finally, the \textit{Calculating} function is activated when an actor provides information, which should be included in a computation which also involves data from the model. The function returns its computed result to a display.
-\\\\ When all functions are found they must be defined by their type and complexity, as below.\\
+\\\\ When all functions are found they must be defined by their type and complexity, as shown below.\\
 \begin{table}[H]
-	\begin{tabular}{| l | c | c |}
+	\begin{tabular}{| p{11cm} | p{2cm} | p{3cm} |}
 	\hline
-	Title																& Complexity 	& Type				\\ \hline
-	Connect new module	&&
-	\\A user should be able to connect a new module							& S				& Update 			\\ \hline
-	Disconnect module	&&
-	\\A user should be able to disconnect a module							& S				& Update	 		\\ \hline
-	Start module	&&
-	\\A user should be able to start a module on the system and on the web page		& M				& Update 			\\ \hline
-	Stop module	&&
-	\\A user should be able to stop a module on the system and on the web page		& M				& Update 			\\ \hline
-	Start system	&&
-	\\A user should be able to start the system on the system						& S				& Update 			\\ \hline
-	Show production of module	&&
-	\\A user should be able to see the production of a module on the web page		& M				& Read/Calculating 	\\ \hline
-	Show consumption of module	&&
-	\\A user should be able to see the consumption of a module on the web page		& M				& Read/Calculating 	\\ \hline
-	Show temperature	&&
-	\\A user should be able to see the temperature								& M				& Read 			\\ \hline
-	Show humidity	&&
-	\\A user should be able to see the humidity								& M				& Read			\\ \hline
-	Show log of module	&&
-	\\A user should be able to see the log of a module							& M				& Read			\\ \hline
-	Show energy level on storage module	&&
-	\\A user should be able to see the energy level on storage modules				& M				& Read/Calculating 	\\ \hline
-	Initialize module	&&
-	\\The system should be able to initialize a module							& C				& Update/Calculating\\ \hline
-	Shutdown on too high temperature	&&
-	\\The system should be able to shutdown if the temperature gets too low			& M				& Read/Calculating 	\\ \hline
-	Standby module	&&
-	\\The system should be able to set a module to standby						& M				& Update 			\\ \hline
-	Create log file	&&
-	\\The system should be able to create a log file for new modules				& C				& Update 			\\ \hline
-	Electrical disconnect module	&&
-	\\The system should be able to electrical disconnect modules					& C				& Update 			\\ \hline
-	Stop module	&&
-	\\The system should be able to stop modules								& M				& Update	 		\\ \hline
-	Start module	&&
-	\\The system should be able to start modules								& M				& Update		 	\\ \hline
+	\textbf{Title}								& \textbf{Complexity}	& \textbf{Type}		\\ \hline
+	connect\_module							&&
+	\\ Modules can be connected no the back of the hub	& S				& Update 			\\ \hline
+	disconnect\_module							&&
+	\\ Modules can be disconnected on the back of the hub & S			& Update	 		\\ \hline
+	start\_system								&&
+	\\ Start the hub from the physical interface			 & S				& Update 			\\ \hline
+	stop\_system								&&
+	\\ Stops all modules including the hub & S		& Update 			\\ \hline
+	power\_off\_system							&&
+	\\ Critical error, shut down it self				& S				& Update 			\\ \hline
+	start\_module								&&
+	\\ Modules can be started from the hubs web page & M				& Update 			\\ \hline
+	initialize\_module							&&
+	\\ Modules are automatically initialized when connected & C			& Update/Calculating\\ \hline
+	stop\_module								&&
+	\\ Modules can be stopped from the hubs web page	& M				& Update 			\\ \hline
+	get\_module\_production						&&
+	\\ Read data from module						& M				& Read/Calculating 	\\ \hline
+	get\_module\_consumption					&&
+	\\ Read data from module						& M				& Read/Calculating 	\\ \hline
+	get\_module\_energy\_level					&&
+	\\ Read data from module						& M				& Read/Calculating 	\\ \hline
+	get\_temperature							&&
+	\\ Read temperature sensor					& M				& Read/Calculating	\\ \hline
+	get\_humidity								&&
+	\\ Read humidity sensor						& M				& Read/Calculating	\\ \hline
+	create\_module\_log	\_file 					&&
+	\\ Create a log file for a module					& VC				& Read/Update		\\ \hline
+	load\_module\_log	\_file 					&&
+	\\ Load an already created log file of a module		& C				& Read/Update		\\ \hline
+	save\_module\_log	\_file 					&&
+	\\ Save a new log file of a module				& C				& Read/Update		\\ \hline
+	send\_module\_command 					&&
+	\\ Send a command to a module				& M				& Update			\\ \hline
+	read\_module\_command 					&&
+	\\ Read a command from a module				& M				& Read/Update		\\ \hline	
+	webserver\_write\_data	 					&&
+	\\ Write data to the web server					& M				& Update			\\ \hline	
+	webserver\_read\_data 						&&
+	\\ Read data from the web server				& M				& Read/Update		\\ \hline	
 	\end{tabular}
-	\caption{S = simple. M = medium. C = complex. VC = very complex}
+	\caption{Table showing the different functions in the system. \\S = simple. M = medium. C = complex. VC = very complex}
+	\label{Function_table}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -427,6 +408,7 @@ Diagram of how to put data on the web server.
 		\caption{Interaction between systems; Web browser and Hub both connected to the database}
  	\end{centering}
 \end{figure}		
+%\todo[inline]{MORE DIAGRAMS :D}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -490,29 +472,33 @@ The sequence diagram explain the dynamics of more complex parts of the system, t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Technical Platform}
-Selecting the technical platform is very important, the wrong platform may cause negative effects on the final product, or in the cost of development or production. The hardware have different specifications and lifetime. Here the design criteria is a big help for selecting the right platform, to fulfil the requirements
+Selecting the technical platform is very important. The wrong platform may cause negative effects on the final product, or in the cost of the development of the product. The hardware have different specifications and lifetime. Here the design criteria is a big help for selecting the right platform, to fulfill the requirements
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Hardware Specifications}
-As hardware we are going to use the following: 
-\\Embedded Artists LPC2478-32 Developer kit.
-\\Temperature sensor
-\\Humidity sensor
-\\Current sensor
-\\Digital Converter
-\\Power Line communication module
-
+As hardware we are going to use the following:
+\begin{itemize}
+	\item Embedded Artists LPC2478-32 Developer kit.
+	\item Temperature sensor
+	\item Humidity sensor
+	\item Current sensor
+	\item Digital Converter
+	\item Line communication module
+\end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Software Specifications}
 In the software part we are using the ARM processor, and we have to develop drivers for the different hardware above, we are also making the following in software:
-\\Web server
-\\Ethernet communication
-\\Storage module driver
-\\Producer module driver
-\\Consumer module driver
+\begin{itemize}
+	\item Web 
+	\item Ethernet communication
+	\item Storage module driver
+	\item Producer module driver
+	\item Consumer module driver
+\end{itemize}
 \begin{table}[H]
-	\begin{tabular}{| l | c | c | c |}
+	\begin{center}
+	\begin{tabular}{| p{5cm}  | p{2.5cm} | p{1cm} | p{1cm} |}
 	\hline
-		Class						& Interface	& HW	& SW	\\ \hline
+		\textbf{Class}					& \textbf{Interface}	& \textbf{HW}	& \textbf{SW}	\\ \hline
 		\textbf{System:}					&			&		&		\\ \hline
 		ARM							& DIG		&		& X 		\\ \hline
 		PLC module					& DIG/ANA	& X		& X 		\\ \hline
@@ -535,7 +521,8 @@ In the software part we are using the ARM processor, and we have to develop driv
 		Interface						& DIG/ANA	& X		& X	 	\\ \hline
 		Indicator						& DIG/ANA	& X		& X		\\ \hline
 	\end{tabular}
-	\caption{DIG = Digital. ANA = Analog. HW = Hardware. SW = Software}
+	\caption{HW + SW Specifications. DIG = Digital. ANA = Analog. HW = Hardware. SW = Software}
+	\end{center}
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
