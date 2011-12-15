@@ -183,7 +183,6 @@ All candidates shown in the block diagram.
 		\item InitModule
 		\item StartModule
 		\item StopModule
-		\item StandbyModule
 		\item CreateModuleLogFile
 		\item LoadModuleLogFile
 		\item UpdateModuleLogFile
@@ -201,7 +200,6 @@ All the different events that can happen in a block or sent between blocks.
 		InitModule 			& ~          & X         & X         & X           & ~           & ~              & ~      & ~ 	       & ~	\\ \hline
 		StartModule 			& ~          & X         & X         & X           & X           & ~              & ~      & ~ 	       & ~	\\ \hline
 		StopModule 			& ~          & X         & X         & X           & X           & ~              & ~      & ~ 	       & ~	\\ \hline
-		StandbyModule 		& ~          & ~         & X         & X           & ~           & ~               & ~      & ~ 	       & ~	\\ \hline
 		CurrentMaxLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
 		CurrentMinLimit	 	& ~          & ~         & ~         & ~           & X           & X               & ~      & ~ 	       & ~	\\ \hline
 		EnergyAboveLimit 		& ~          & ~         & X         & ~           & X           & ~               & ~      & ~ 	       & ~	\\ \hline
@@ -327,20 +325,20 @@ A description of all the different users to the system and the actions each user
 In the EIDE1 course the interaction design was made for the web interface and the physical interface for the hub, with different design sessions. The user needs and the design for the two interfaces was determined to be made. The IDE report is included in the appendix.
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.75\textwidth]{images/hub_user_interact.png}
+		 \includegraphics[width=0.8\textwidth]{images/hub_user_interact.png}
 		\caption{Final design of the hubs physical interface.}
 	\end{centering}
 \end{figure}
 \textbf{WebInterface:} In EWEB course a static web interface was developed with the knowledge gained from the interaction design sessions and developed in HTML, the WEB report is included in appendix.
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.69\textwidth]{images/screen_hub_page.png}
+		 \includegraphics[width=0.75\textwidth]{images/screen_hub_page.png}
 		\caption{The final web interface design, showing the hub module page}
  	\end{centering}
 \end{figure}
 \begin{figure}[H]
 	\begin{centering}
-		 \includegraphics[width=0.69\textwidth]{images/screen_index_page.png}
+		 \includegraphics[width=0.75\textwidth]{images/screen_index_page.png}
 		\caption{The final web interface design, showing index page}
  	\end{centering}
 \end{figure}
@@ -421,7 +419,6 @@ Diagram of how to put data on the web server.
 Design criteria is important to consider in order to choose the right technical platform to perform the criteria. When marketing the product design criteria is very important, in making the specification for the product.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Design Criteria}
-Write in what parts should be used (mostly off the shelf things).
 \begin{table}[H]
 	\begin{tabular}{| r | c | c | c | c | c |}
 	\hline
